@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('datostkt.php')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        //console.log(data);
         console.log("Contenido de data:", data); // Verificar los datos en la consola
 
         //guardar datos en una variable
