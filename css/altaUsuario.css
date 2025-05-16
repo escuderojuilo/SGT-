@@ -1,0 +1,79 @@
+body {
+    background-color: rgb(156, 155, 155);
+}
+
+.custom-navbar {
+    background-color: #013B82;
+    padding: 0;
+}
+
+.custom-navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-navbar .nav-item {
+    padding: 15px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-navbar .nav-item:hover,
+.custom-navbar .dropdown-item:hover {
+    background-color: #02214F;
+}
+
+/* Estilos de submenús */
+.custom-navbar .dropdown-menu {
+    display: none;
+    top: 100%;
+    left: 0;
+    background-color: #013B82;
+    padding: 0;
+    min-width: 200px;
+    border-radius: 0 0 4px 4px;
+    border: none;
+}
+
+.custom-navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+/* Tarjeta del formulario */
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 15px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    background-color: #02A7DA !important;
+    text-align: center;
+}
+
+.custom-btn-continuar {
+    background-color: #02A7DA; 
+    color: white;
+    border: none;
+    font-size: small;
+}
+
+.custom-btn-continuar:hover {
+    background-color: #013B82; 
+}

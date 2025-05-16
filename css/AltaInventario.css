@@ -1,0 +1,111 @@
+body {
+    background-color: rgb(156, 155, 155);
+}
+
+.custom-navbar {
+    background-color: #013B82;
+    padding: 0;
+}
+
+.custom-navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-navbar .nav-item {
+    padding: 15px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-navbar .nav-item:hover {
+    background-color: #02214F;
+}
+
+/* ==================== */
+/* ESTILOS DE SUBMENÚS */
+/* ==================== */
+.custom-navbar .dropdown-menu {
+    display: none;
+    top: 100%;
+    left : 0;
+    right: 10;
+    background-color: #013B82;
+    padding: 0;
+    min-width: 200px;
+    width: auto;
+    border-radius: 0 0 4px 4px;
+    border: none;
+}
+
+.custom-navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+.custom-navbar .dropdown-item:hover {
+    background-color: #02214F;
+    color: black;
+}
+
+/* ==================== */
+/* ESTILOS DEL FORMULARIO */
+/* ==================== */
+.form-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-container input[type="text"],
+.form-container select {
+    border: 1px solid #089ABA;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* ==================== */
+/* ESTILOS DE PREGUNTAS ADICIONALES */
+/* ==================== */
+.pregunta-adicional {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #089ABA;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: none;
+}
+
+/* ==================== */
+/* ESTILOS DE BOTONES */
+/* ==================== */
+.btn-custom {
+    background-color: #089ABA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-custom:hover {
+    background-color: #013B82;
+    color: white;
+}

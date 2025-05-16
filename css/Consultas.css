@@ -1,0 +1,142 @@
+body {
+    background-color: rgb(156, 155, 155);
+}
+
+.custom-navbar {
+    background-color: #013B82;
+    padding: 0;
+}
+
+.custom-navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-navbar .nav-item {
+    padding: 15px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-navbar .nav-item:hover {
+    background-color: #02214F;
+}
+
+/* ==================== */
+/* ESTILOS DE SUBMENÚS */
+/* ==================== */
+.custom-navbar .dropdown-menu {
+    display: none;
+    top: 100%;
+    left : 0;
+    right: 10;
+    background-color: #013B82;
+    padding: 0;
+    min-width: 200px;
+    width: auto;
+    border-radius: 0 0 4px 4px;
+    border: none;
+}
+
+.custom-navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+.custom-navbar .dropdown-item:hover {
+    background-color: #02214F;
+    color: black;
+}
+
+/* Estilos personalizados para la tabla con color #086ABA */
+
+/* Encabezado de la tabla */
+#datatable_users thead th {
+    background-color: #086ABA;
+    color: white;
+    border-bottom: 2px solid #086ABA;
+    font-weight: 500;
+    padding: 12px 15px;
+}
+
+/* Filas de la tabla */
+#datatable_users tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover sobre las filas */
+#datatable_users tbody tr:hover {
+    background-color: rgba(8, 106, 186, 0.08);
+}
+
+/* Filas alternas (striped) */
+#datatable_users.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: rgba(8, 106, 186, 0.03);
+}
+
+/* Bordes de la tabla */
+#datatable_users.table-bordered {
+    border: 1px solid #dee2e6;
+}
+#datatable_users.table-bordered th,
+#datatable_users.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+/* Paginación */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #086ABA !important;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #086ABA !important;
+    color: white !important;
+    border: 1px solid #086ABA !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgba(8, 106, 186, 0.1);
+    color: #086ABA !important;
+    border: 1px solid rgba(8, 106, 186, 0.2);
+}
+
+/* Búsqueda y filtros */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #086ABA;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+.dataTables_wrapper .dataTables_filter input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(8, 106, 186, 0.25);
+    border-color: #086ABA;
+}
+
+/* Selector de cantidad de registros */
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #086ABA;
+    border-radius: 4px;
+    padding: 5px;
+}
+.dataTables_wrapper .dataTables_length select:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(8, 106, 186, 0.25);
+    border-color: #086ABA;
+}
+
+/* Scroll horizontal (si es necesario) */
+.dataTables_scrollBody {
+    border-bottom: 1px solid #dee2e6 !important;
+}

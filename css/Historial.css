@@ -1,0 +1,147 @@
+/* ===== ESTILOS EXISTENTES (MANTENIDOS SIN CAMBIOS) ===== */
+body {
+    background-color: rgb(156, 155, 155);
+}
+
+.custom-navbar {
+    background-color: #013B82;
+    padding: 0;
+}
+
+.custom-navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-navbar .nav-item {
+    padding: 15px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-navbar .nav-item:hover {
+    background-color: #02214F;
+}
+
+/* ==================== */
+/* ESTILOS DE SUBMENÚS */
+/* ==================== */
+.custom-navbar .dropdown-menu {
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 10;
+    background-color: #013B82;
+    padding: 0;
+    min-width: 200px;
+    width: auto;
+    border-radius: 0 0 4px 4px;
+    border: none;
+}
+
+.custom-navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+.custom-navbar .dropdown-item:hover {
+    background-color: #02214F;
+    color: black;
+}
+
+/* ===== NUEVOS ESTILOS PARA TABLA SIN SCROLL HORIZONTAL ===== */
+#datatable_tickets_wrapper {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+#datatable_tickets {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: auto !important;
+    margin: 15px 0;
+}
+
+#datatable_tickets thead th {
+    background-color: #086ABA !important;
+    color: white !important;
+    border-bottom: 2px solid #086ABA !important;
+    font-weight: 500;
+    padding: 12px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#datatable_tickets tbody td {
+    vertical-align: top;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(8, 106, 186, 0.1);
+}
+
+/* Columna Problema ajustada */
+#datatable_tickets td:nth-child(5) {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    min-width: 0 !important;
+    max-width: 350px !important;
+}
+
+/* Ajuste de columnas para evitar overflow */
+#datatable_tickets th,
+#datatable_tickets td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Contenedor principal ajustado */
+.container.my-4 {
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+/* ===== MEDIA QUERIES PARA RESPONSIVIDAD ===== */
+@media (max-width: 992px) {
+    #datatable_tickets {
+        display: table !important;
+    }
+    
+    #datatable_tickets th,
+    #datatable_tickets td {
+        max-width: none !important;
+        white-space: normal !important;
+    }
+    
+    #datatable_tickets td:nth-child(5) {
+        max-width: 250px !important;
+    }
+}
+
+/* ===== ESTILOS DE DATATABLES (MANTENIDOS) ===== */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #086ABA !important;
+    color: white !important;
+    border-color: #086ABA !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #086ABA !important;
+    border-radius: 4px !important;
+}
+
+/* ===== ELIMINACIÓN DE SCROLL HORIZONTAL GLOBAL ===== */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
