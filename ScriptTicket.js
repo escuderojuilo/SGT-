@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hora: ticket.FECHA_INI, problema: ticket.MOTIVO, estado: ticket.DESC_STATUS_TKT, 
         idestado: ticket.ID_STATUS_TKT, servicioSocial: ticket.AP_PAT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
 
-        console.log("Tickets:", tickets)
+        //console.log("Tickets:", tickets)
     
         filtrarTickets('1');
     })
