@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ ."/includes/funciones.php";
+    require __DIR__ ."SGT-Boostrap/includes/funciones.php";
 
 
     if(!isset($_SESSION)){
@@ -24,14 +24,14 @@
     <title>Estadisticas Usuario</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="AltaInventario.css"> 
+    <link rel="stylesheet" href="SGT-Boostrap/css/AltaInventario.css"> 
 </head>
 <body>
     <!-- Header -->
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="IMG/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 
@@ -48,9 +48,9 @@
                             Alta
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                            <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
-                            <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/SoportesAntiguos.php">Alta Soportes</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

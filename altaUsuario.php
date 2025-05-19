@@ -12,14 +12,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="css/altaUsuario.css">
+    <link rel="stylesheet" href="SGT-Boostrap/css/altaUsuario.css">
 </head>
 <body class="bg-secondary">
     
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 
@@ -36,31 +36,31 @@
                             Alta
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                            <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
-                            <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/SoportesAntiguos.php">Alta Soportes</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="consultas.php">Consultas</a>
+                        <a class="nav-link" href="SGT-Boostrap/Consultas.php">Consultas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Historial.php">Historial</a>
+                        <a class="nav-link" href="SGT-Boostrap/Historial.php">Historial</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Estadisticas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="EstadisticasSS.php">Estadisticas Servicio</a></li>
-                            <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadisticas Usuario</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/EstadisticasSS.php">Estadisticas Servicio</a></li>
+                            <li><a class="dropdown-item" href="SGT-Boostrap/EstadisticasUsuario.php">Estadisticas Usuario</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Ticket.php">Tickets</a>
+                        <a class="nav-link" href="SGT-Boostrap/Ticket.php">Tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="InicioSesion.php">Cerrar Sesion</a>
+                        <a class="nav-link" href="SGT-Boostrap/index.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
