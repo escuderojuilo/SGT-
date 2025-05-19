@@ -33,7 +33,7 @@ function envmail($nombre, $mai, $tok){
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = $nombre;
-        $mail->Body    = "<p> Presiona aqui: <a href='http://localhost:8000/verificarcuenta.php?token=".$tok."'> Confirmar Cuenta </p>";
+        $mail->Body    = "<p> Presiona aqui: <a href='http://192.168.115.85/verificarcuenta.php?token=".$tok."'> Confirmar Cuenta </p>";
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
