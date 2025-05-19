@@ -1,5 +1,5 @@
 <?php
-    require "includes/funciones.php";
+    require "SGT-Boostrap/includes/funciones.php";
     reg();
 ?>
 

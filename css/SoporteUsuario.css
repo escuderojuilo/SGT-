@@ -1,0 +1,59 @@
+/* ===== ESTILOS EXISTENTES (MANTENIDOS SIN CAMBIOS) ===== */
+body {
+    background-color: rgb(156, 155, 155);
+}
+
+.custom-navbar {
+    background-color: #013B82;
+    padding: 0;
+}
+
+.custom-navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-navbar .nav-item {
+    padding: 15px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-navbar .nav-item:hover {
+    background-color: #02214F;
+}
+
+/* ==================== */
+/* ESTILOS DE SUBMENÚS */
+/* ==================== */
+.custom-navbar .dropdown-menu {
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 10;
+    background-color: #013B82;
+    padding: 0;
+    min-width: 200px;
+    width: auto;
+    border-radius: 0 0 4px 4px;
+    border: none;
+}
+
+.custom-navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.custom-navbar .dropdown-item {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+}
+
+.custom-navbar .dropdown-item:hover {
+    background-color: #02214F;
+    color: black;
+}

@@ -1,11 +1,9 @@
 
 <?php
 
-require __DIR__ ."/includes/funciones.php";
+require __DIR__ ."/SGT-Boostrap/includes/funciones.php";
 
 logusr();
-
-
 
 ?>
 
@@ -17,14 +15,14 @@ logusr();
     <title>Inicio de Sesión - SOPORTEC</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css " rel="stylesheet">
-    <link href="InicioSesion.css" rel="stylesheet">
+    <link href="SGT-Boostrap/css/InicioSesion.css" rel="stylesheet">
 </head>
 <body>
     <!-- Encabezado que ocupa todo el ancho con Bootstrap -->
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
     </div>

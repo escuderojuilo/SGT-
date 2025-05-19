@@ -1,6 +1,6 @@
 <?php
 
-require "includes/database.php";
+require "SGT-Boostrap/includes/database.php";
 
 $con ='SELECT usuario.NOMBRE, asignacion.ID_UC, COUNT(*) as veces FROM asignacion inner join personal_uc on asignacion.ID_UC = personal_uc.ID_UC
  inner join usuario on personal_uc.ID_USR = usuario.ID_USR group by ID_UC';
@@ -25,7 +25,7 @@ foreach ($resul as $row) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="css/EstadisticaSS.css">
+    <link rel="stylesheet" href="SGT-Boostrap/css/EstadisticaSS.css">
     <!-- Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -60,7 +60,7 @@ foreach ($resul as $row) {
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
@@ -76,31 +76,31 @@ foreach ($resul as $row) {
                                 Alta
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                                <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
-                                <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
+                                <li><a class="dropdown-item" href="SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                                <li><a class="dropdown-item" href="SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
+                                <li><a class="dropdown-item" href="SGT-Boostrap/SoportesAntiguos.php">Alta Soportes</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="consultas.php">Consultas</a>
+                            <a class="nav-link" href="SGT-Boostrap/Consultas.php">Consultas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Historial.php">Historial</a>
+                            <a class="nav-link" href="SGT-Boostrap/Historial.php">Historial</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Estadísticas
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="EstadisticasSS.php">Estadísticas Servicio</a></li>
-                                <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadísticas Usuario</a></li>
+                                <li><a class="dropdown-item" href="SGT-Boostrap/EstadisticasSS.php">Estadísticas Servicio</a></li>
+                                <li><a class="dropdown-item" href="SGT-Boostrap/EstadisticasUsuario.php">Estadísticas Usuario</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Ticket.php">Tickets</a>
+                            <a class="nav-link" href="SGT-Boostrap/Ticket.php">Tickets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="InicioSesion.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="SGT-Boostrap/index.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

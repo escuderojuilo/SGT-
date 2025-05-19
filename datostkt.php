@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: application/json');
-require "includes/database.php";
+require "SGT-Boostrap/includes/database.php";
 
     
     if(!isset($_SESSION)){
