@@ -12,6 +12,8 @@
 
     var_dump($_SESSION);
 
+    //hola prueba de commit
+
 ?>
 
 <!DOCTYPE html>
