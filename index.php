@@ -1,7 +1,7 @@
 
 <?php
 
-require __DIR__ ."/SGT-Boostrap/includes/funciones.php";
+require __DIR__ ."/includes/funciones.php";
 
 logusr();
 
@@ -22,7 +22,7 @@ logusr();
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
     </div>

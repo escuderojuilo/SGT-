@@ -5,7 +5,7 @@
 
     session_destroy();
     
-    header('Location: SGT-Boostrap/index.php');
+    header('Location: /SGT-Boostrap/index.php');
 
   
 ?>
