@@ -19,7 +19,7 @@ if (isset($_GET['token'])) {
 
         if($stmt->execute()){
             echo "Registro exitoso";
-            echo ' <button onclick="window.location.href=\'index.php\'">Regresar a la pagina principal</button>';
+            echo ' <button onclick="window.location.href=\'/SGT-Boostrap/index.php\'">Regresar a la pagina principal</button>';
         }else{
             echo "Fallo el registro ";
         }
