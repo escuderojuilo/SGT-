@@ -1,3 +1,7 @@
+<?php
+    require __DIR__ ."/includes/funciones.php";
+    servicio();
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -8,14 +12,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="altaUsuario.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuario.css">
 </head>
 <body class="bg-secondary">
     
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="IMG/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 
@@ -44,7 +48,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="num" class="form-label">No. Trabajador/No. Cuenta:</label>
-                                        <input type="text" class="form-control" id="num" name="num">
+                                        <input type="text" class="form-control" id="numero" name="numero">
                                     </div>
                                     <div class="mb-3">
                                         <label for="depa" class="form-label">Departamento: *</label>
@@ -62,19 +66,15 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cubiculo" class="form-label">Cubículo:</label>
-                                        <input type="text" class="form-control" id="cubiculo" name="cubiculo">
+                                        <input type="text" class="form-control" id="cub" name="cub">
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="extension" class="form-label">Extensión:</label>
-                                        <input type="text" class="form-control" id="extension" name="extension">
+                                        <input type="text" class="form-control" id="tel" name="tel">
                                     </div>
                                     <div class="mb-3">
                                         <label for="correo" class="form-label">Correo: *</label>
-                                        <input type="email" class="form-control" id="correo" name="correo" required>
+                                        <input type="email" class="form-control" id="mai" name="mai" required>
                                     </div>
                                 </div>
                             </div>

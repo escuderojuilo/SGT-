@@ -56,7 +56,7 @@ logusr();
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    ¿No tienes una cuenta? <a href="#">Regístrate</a>
+                    ¿No tienes una cuenta? <a href="/SGT-Boostrap/RegistroUsuario.php">Regístrate</a>
                 </div>
             </div>
         </div>

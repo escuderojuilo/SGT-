@@ -394,13 +394,7 @@ function verificarcuenta(){
             $stmt->close();
             $stmt = $db->prepare("UPDATE usuario SET TOKEN=NULL, confirmado='1' WHERE TOKEN=?");
             $stmt->bind_param("s", $token);
-
-            if($stmt->execute()){
-                echo "Registro exitoso";
-                echo ' <button onclick="window.location.href=\'/SGT-Boostrap/index.php\'">Regresar a la pagina principal</button>';
-            }else{
-                echo "Fallo el registro ";
-            }
+            $stmt->execute();
 
         } else {
 
