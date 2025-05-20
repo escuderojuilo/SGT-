@@ -1,3 +1,13 @@
+<?php
+    require __DIR__ ."/includes/funciones.php";
+
+
+    verificarcuenta();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +23,7 @@
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="imagenes/SOPORTEC/PagWebHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="imagenes/SOPORTEC/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
     </div>
@@ -29,7 +39,7 @@
                             <p class="mb-4">Tu registro se ha completado correctamente.</p>
                             <div class="d-grid">
                                 <!-- Botón que redirige a index.php -->
-                                <a href="index.php" class="btn btn-primary">Regresar al Inicio</a>
+                                <a href="/SGT-Boostrap/index.php" class="btn btn-primary">Regresar al Inicio</a>
                             </div>
                         </div>
                     </div>
