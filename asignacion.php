@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require "SGT-Boostrap/includes/database.php";
+require "includes/database.php";
 
 // Verificar si se recibió una solicitud POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

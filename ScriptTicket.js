@@ -6,7 +6,7 @@ let serviciosSociales = [];
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('datostkt.php')
+    fetch('/SGT-Boostrap/datostkt.php')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
 
-    fetch('cambiar_estado.php', {
+    fetch('/SGT-Boostrap/cambiar_estado.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
 }
 
 function tasignaciones(ticketId, ucid, fechasig) {
-    fetch('asignacion.php', {
+    fetch('/SGT-Boostrap/asignacion.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ function filtrarTickets(estado) {
     });
 }
 
-fetch('datoserv.php')
+fetch('/SGT-Boostrap/datoserv.php')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -151,7 +151,7 @@ fetch('datoserv.php')
         //guardar datos en una variable
         window.serviciosSociales = data.map(serv  => ({id: serv.ID_USR, nombre: serv.NOMBRE, apellido: serv.AP_PAT})); // Inicializar la variable tickets como un arreglo
 
-        console.log("Serv:", serviciosSociales)
+        console.log("Serv:", serviciosSociales);
         // Suponiendo que tienes una función para llenar los datos
 
         filtrarTickets('1'); // Llamar a la función para filtrar los tickets por estado 'Espera'
@@ -187,7 +187,8 @@ function asignarServicioSocial() {
     const now = new Date();
     const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
      ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-    const servicioSeleccionado = window.serviciosSociales.find(s => s.id == servicioId);
+
+    const servicioSeleccionado = window.serviciosSociales.find(s => s.id === servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
 
     const ticketIndex = tickets.findIndex(t => t.id === ticketActual);
@@ -199,6 +200,7 @@ function asignarServicioSocial() {
     tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion);
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
+    
     actualizarEstadoTicket(ticketActual, "2", () => {
         filtrarTickets('2'); // Redirigir a Iniciados automáticamente
     });
