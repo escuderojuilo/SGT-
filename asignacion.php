@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         // Conectar a la base de datos
         if ($db->connect_error) {
-            echo json_encode(['success' => false, 'message' => 'Error de conexión a la base de datos']);
+            http_response_code(response_code: 500);
+            echo json_encode(value: ['success' => false, 'message' => 'Error de conexión a la base de datos']);
             exit;
         }
 
@@ -31,8 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param('iis', $ticketId, $cambio['ID_UC'] , $fechasig);
 
         if ($stmt->execute()) {
-            echo json_encode(['success' => true]);
+            http_response_code(response_code: 200);
+            echo json_encode(value: ['success' => true]);
         } else {
+            http_response_code(response_code: 500);
             echo json_encode(value: ['success' => false, 'message' => 'Error al ingresar la asignación']);
         }
 

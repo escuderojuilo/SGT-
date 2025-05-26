@@ -65,7 +65,9 @@ function tasignaciones(ticketId, ucid, fechasig) {
             fecha: fechasig
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log("Estado HTTP:", response.status);
+        return response.json();})
     .then(data => {
         if (data.success) {
             console.log(`Asignación del ticket ${ticketId} actualizada a ${ucid}`);
@@ -167,7 +169,7 @@ function mostrarModalAsignacion(ticketId) {
     window.serviciosSociales.forEach(servicio => {
         const option = document.createElement('option');
         option.value = servicio.id;
-        option.textContent = servicio.nombre + " " + servicio.apellido;
+        option.textContent = servicio.nombre;
         select.appendChild(option);
     });
 
@@ -201,7 +203,7 @@ function asignarServicioSocial() {
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
-    actualizarEstadoTicket(ticketActual, "2", () => {
+    actualizarEstadoTicket(ticketActual, '2', () => {
         filtrarTickets('2'); // Redirigir a Iniciados automáticamente
     });
 }
