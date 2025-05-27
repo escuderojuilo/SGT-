@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-center mb-4">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-danger" id='1' onclick="filtrarTickets('En espera')">
+                                <button type="button" class="btn btn-danger" id='1' onclick="filtrarTickets('1')">
                                     <i class="material-icons">schedule</i> En Espera
                                 </button>
                                 <button type="button" class="btn btn-warning" id='2' onclick="filtrarTickets('2')">
@@ -163,7 +163,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Script personalizado -->
     <!-- Al final del body, asegura este orden -->
-    <script src="datostkt.php"></script>
-    <script src="ScriptTicket.js"></script> 
+    <script src="/SGT-Boostrap/datostkt.php"></script>
+    <script src="/SGT-Boostrap/ScriptTicket.js"></script> 
 </body>
 </html>
