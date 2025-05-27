@@ -12,14 +12,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuario.css">
+    <link rel="stylesheet" href="altaUsuario.css">
 </head>
 <body class="bg-secondary">
     
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="IMG/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="num" class="form-label">No. Trabajador/No. Cuenta:</label>
-                                        <input type="text" class="form-control" id="numero" name="numero">
+                                        <input type="text" class="form-control" id="num" name="num">
                                     </div>
                                     <div class="mb-3">
                                         <label for="depa" class="form-label">Departamento: *</label>
@@ -59,22 +59,42 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="pass" class="form-label">Contraseña:</label>
+                                        <label for="pass" class="form-label">Contraseña: *</label>
                                         <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirm_pass" class="form-label">Confirmar Contraseña: *</label>
+                                        <input type="password" class="form-control" id="confirm_pass" name="confirm_pass" placeholder="Confirmar Contraseña" required>
+                                        <div class="invalid-feedback">Las contraseñas no coinciden</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cubiculo" class="form-label">Cubículo:</label>
-                                        <input type="text" class="form-control" id="cub" name="cub">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Edificio</span>
+                                            <select class="form-select" id="inputGroupSelect01">
+                                                <option value="1">A</option>
+                                                <option value="2">B</option>
+                                                <option value="3">D</option>
+                                                <option value="4">R</option>
+                                                <option value="5">S</option>
+                                                <option value="6">T</option>
+                                                <option value="7">V</option>
+                                            </select>
+                                        <input type="text" class="form-control" placeholder="Cubículo" aria-label="Número de cubículo">
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">Teléfono:</label>
-                                        <input type="text" class="form-control" id="tel" name="tel">
+                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="extension" class="form-label">Extensión:</label>
+                                        <input type="text" class="form-control" id="extension" name="extension">
                                     </div>
                                     <div class="mb-3">
                                         <label for="correo" class="form-label">Correo: *</label>
-                                        <input type="email" class="form-control" id="mai" name="mai" required>
+                                        <input type="email" class="form-control" id="correo" name="correo" required>
                                     </div>
                                 </div>
                             </div>
@@ -88,8 +108,44 @@
         </div>
     </div>
     </div>
+        <!-- Modal de éxito -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">¡Éxito!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Se ha registrado correctamente, por favor verifica tu correo para activar tu cuenta.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="index.php" class="btn btn-success">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Validación de contraseña -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+        
+            const password = document.getElementById('pass').value;
+            const confirmPassword = document.getElementById('confirm_pass').value;
+        
+            if (password !== confirmPassword) {
+                document.getElementById('confirm_pass').classList.add('is-invalid');
+            } else {
+            // Simulación de registro exitoso hacer cambios si es necesario
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            
+        }
+    });
+    </script>
 </body>
 </html>
