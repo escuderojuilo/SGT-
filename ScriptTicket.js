@@ -48,10 +48,10 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
     .catch(error => {
       console.error('Error en la solicitud:', error);
         alert(`Ocurrió un error al intentar actualizar el estado del ticket ${ticketId}. ${nuevoEstado}`);
-    })
+    });
 }
 
-document.addEventListener('DOMContentLoaded', function tasignaciones(ticketId, servicio, fechasig) {
+function tasignaciones(ticketId, servicio, fechasig) {
     fetch('/SGT-Boostrap/asignacion.php', {
         method: 'POST',
         headers: {
@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function tasignaciones(ticketId, s
     .catch(error => {
        console.error('Error en la solicitud:', error);
         alert(`Ocurrió un error al intentar actualizar la asignación del ticket ${ticketId}. ${servicio}`);
-    })
+    });
 
-})
+}
 
 
 function filtrarTickets(estado) {
