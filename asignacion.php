@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_query($db, $query);
         $cambio = mysqli_fetch_assoc($result);
         
-        
+    
 
         // Actualizar el estado del ticket
         $stmt = $db->prepare("INSERT INTO asignacion (ID_TKT, ID_UC, FECHA_ASIG) VALUES (?, ?, ?)");
