@@ -199,7 +199,7 @@ function asignarServicioSocial() {
         tickets[ticketIndex].servicioSocial = nombreServicio;
     }
 
-    tasignaciones(ticketActual, servicioSeleccionado, fechaHoraFinalizacion);
+    tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion);
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
