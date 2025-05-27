@@ -48,7 +48,7 @@
                             Soporte
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="soporteLab.php">Mantenimiento Laboratorio</a></li>
+                            <li><a class="dropdown-item" href="soporteLab.php">Mantenimiento</a></li>
                             <li><a class="dropdown-item" href="ticketAdmin.php">Soporte Tecnico</a></li>
                         </ul>
                     </li>
