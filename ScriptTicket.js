@@ -1,9 +1,7 @@
 // ScriptTicket.js - Lógica principal del sistema de tickets
-
 let tickets = [];
 let ticketActual = null;
 let serviciosSociales = [];
-
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/SGT-Boostrap/datostkt.php')
@@ -15,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //guardar datos en una variable
         tickets = data.map(ticket  => ({ID: ticket.ID_TKT, solicitante: ticket.NOMBRE, cubiculo: ticket.CUBICULO, 
         hora: ticket.FECHA_INI, problema: ticket.MOTIVO, estado: ticket.DESC_STATUS_TKT, 
-        idestado: ticket.ID_STATUS_TKT, servicioSocial: ticket.AP_PAT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
+        idestado: ticket.ID_STATUS_TKT, servicioSociall: ticket.AP_PAT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
 
         //console.log("Tickets:", tickets)
     
@@ -48,12 +46,12 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
         }
     })
     .catch(error => {
-        console.error('Error en la solicitud:', error);
+      console.error('Error en la solicitud:', error);
         alert(`Ocurrió un error al intentar actualizar el estado del ticket ${ticketId}. ${nuevoEstado}`);
-    });
+    })
 }
 
-function tasignaciones(ticketId, ucid, fechasig) {
+document.addEventListener('DOMContentLoaded', function tasignaciones(ticketId, servicio, fechasig) {
     fetch('/SGT-Boostrap/asignacion.php', {
         method: 'POST',
         headers: {
@@ -61,7 +59,7 @@ function tasignaciones(ticketId, ucid, fechasig) {
         },
         body: JSON.stringify({
             idtkt: ticketId,
-            idserv: ucid,
+            idserv: servicio,
             fecha: fechasig
         })
     })
@@ -70,19 +68,20 @@ function tasignaciones(ticketId, ucid, fechasig) {
         return response.json();})
     .then(data => {
         if (data.success) {
-            console.log(`Asignación del ticket ${ticketId} actualizada a ${ucid}`);
+            console.log(`Asignación del ticket ${ticketId} actualizada a ${servicio}`);
             location.reload();
         } else {
             console.error(`Error al actualizar la asignación del ticket ${ticketId}:`, data.message);
             alert(`Error al actualizar la asignación: ${data.message}`);
         }
     })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-        alert(`Ocurrió un error al intentar actualizar la asignación del ticket ${ticketId}. ${ucid}`);
-    });
 
-}
+    .catch(error => {
+       console.error('Error en la solicitud:', error);
+        alert(`Ocurrió un error al intentar actualizar la asignación del ticket ${ticketId}. ${servicio}`);
+    })
+
+})
 
 
 function filtrarTickets(estado) {
@@ -144,14 +143,15 @@ function filtrarTickets(estado) {
     });
 }
 
+
 fetch('/SGT-Boostrap/datoserv.php')
     .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        console.log("Contenido de data:", data); // Verificar los datos en la consola
+    .then(datos => {
+        console.log(datos);
+        console.log("Contenido de data:", datos); // Verificar los datos en la consola
 
         //guardar datos en una variable
-        window.serviciosSociales = data.map(serv  => ({id: serv.ID_USR, nombre: serv.NOMBRE, apellido: serv.AP_PAT})); // Inicializar la variable tickets como un arreglo
+        serviciosSociales = datos.map(serv  => ({id: serv.ID_USR, nombre: serv.NOMBRE, apellido: serv.AP_PAT})); // Inicializar la variable tickets como un arreglo
 
         console.log("Serv:", serviciosSociales);
         // Suponiendo que tienes una función para llenar los datos
@@ -166,7 +166,7 @@ function mostrarModalAsignacion(ticketId) {
     const select = document.getElementById('servicio-social-select');
     select.innerHTML = '<option value="" selected disabled>Seleccione servicio social</option>';
 
-    window.serviciosSociales.forEach(servicio => {
+    serviciosSociales.forEach(servicio => {
         const option = document.createElement('option');
         option.value = servicio.id;
         option.textContent = servicio.nombre;
@@ -190,7 +190,7 @@ function asignarServicioSocial() {
     const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
      ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
-    const servicioSeleccionado = window.serviciosSociales.find(s => s.id === servicioId);
+    const servicioSeleccionado = serviciosSociales.find(s => s.id === servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
 
     const ticketIndex = tickets.findIndex(t => t.id === ticketActual);
@@ -199,11 +199,11 @@ function asignarServicioSocial() {
         tickets[ticketIndex].servicioSocial = nombreServicio;
     }
 
-    tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion);
+    tasignaciones(ticketActual, servicioSeleccionado, fechaHoraFinalizacion);
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
-    actualizarEstadoTicket(ticketActual, '2', () => {
+    actualizarEstadoTicket(ticketActual, "2", () => {
         filtrarTickets('2'); // Redirigir a Iniciados automáticamente
     });
 }
