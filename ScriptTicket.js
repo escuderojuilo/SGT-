@@ -254,7 +254,7 @@ function finalizarTicket() {
 
 
     if (ticketIndex !== -1) {
-        tickets[ticketIndex].idestado = "3";
+        //tickets[ticketIndex].idestado = "3";
         tickets[ticketIndex].horafin = fechaHoraFinalizacion;
 
 
