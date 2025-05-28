@@ -8,9 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
 
     // Validar los datos
-    if (isset($input['id']) && isset($input['estado'])) {
+    if (isset($input['id']) && isset($input['estado']) && isset($input['fechaHorafin'])) {
         $ticketId = $input['id'];
         $nuevoEstado = $input['estado'];
+        $fechafin = $input['fechaHorafin'];
     
         // Conectar a la base de datos
 
@@ -24,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        // $cambio = mysqli_fetch_assoc($result);
         
         // Actualizar el estado del ticket
-        $stmt = $db->prepare("UPDATE ticket SET ID_STATUS_TKT = ? WHERE  ID_TKT= ?");
-        $stmt->bind_param('ii', $nuevoEstado, $ticketId);
+        $stmt = $db->prepare("UPDATE ticket SET ID_STATUS_TKT = ?, FECHA_FIN = ? WHERE  ID_TKT= ?");
+        $stmt->bind_param('isi', $nuevoEstado, $fechafin,  $ticketId);
 
         if ($stmt->execute()) {
             echo json_encode(['success' => true]);

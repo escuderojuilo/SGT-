@@ -12,14 +12,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="altaUsuario.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuario.css">
 </head>
 <body class="bg-secondary">
     
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="IMG/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 
@@ -36,10 +36,10 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">Nombre: *</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="pat" class="form-label">Apellido Paterno:</label>
+                                        <label for="pat" class="form-label">Apellido Paterno: *</label>
                                         <input type="text" class="form-control" id="pat" name="pat" placeholder="Apellido Paterno" required>
                                     </div>
                                     <div class="mb-3">
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="num" class="form-label">No. Trabajador/No. Cuenta:</label>
-                                        <input type="text" class="form-control" id="num" name="num">
+                                        <input type="text" class="form-control" id="numero" name="numero">
                                     </div>
                                     <div class="mb-3">
                                         <label for="depa" class="form-label">Departamento: *</label>
@@ -73,20 +73,20 @@
                                         <label for="cubiculo" class="form-label">Cubículo:</label>
                                         <div class="input-group">
                                             <span class="input-group-text">Edificio</span>
-                                            <select class="form-select" id="inputGroupSelect01">
-                                                <option value="1">A</option>
-                                                <option value="2">B</option>
-                                                <option value="3">D</option>
-                                                <option value="4">R</option>
-                                                <option value="5">S</option>
-                                                <option value="6">T</option>
-                                                <option value="7">V</option>
+                                            <select class="form-select" id="cub">
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="D">D</option>
+                                                <option value="R">R</option>
+                                                <option value="S">S</option>
+                                                <option value="T">T</option>
+                                                <option value="V">V</option>
                                             </select>
                                         <input type="text" class="form-control" placeholder="Cubículo" aria-label="Número de cubículo">
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                        <input type="text" class="form-control" id="tel" name="tel">
                                     </div>
                                     <div class="mb-3">
                                         <label for="extension" class="form-label">Extensión:</label>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="correo" class="form-label">Correo: *</label>
-                                        <input type="email" class="form-control" id="correo" name="correo" required>
+                                        <input type="email" class="form-control" id="mai" name="mai" required>
                                     </div>
                                 </div>
                             </div>

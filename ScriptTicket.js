@@ -2,6 +2,7 @@
 let tickets = [];
 let ticketActual = null;
 let serviciosSociales = [];
+let servactual = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('datostkt.php')
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //guardar datos en una variable
         tickets = data.map(ticket  => ({ID: ticket.ID_TKT, solicitante: ticket.NOMBRE, cubiculo: ticket.CUBICULO, 
         hora: ticket.FECHA_INI, problema: ticket.MOTIVO, estado: ticket.DESC_STATUS_TKT, 
-        idestado: ticket.ID_STATUS_TKT, servicioSociall: ticket.AP_PAT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
+        idestado: ticket.ID_STATUS_TKT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
 
         //console.log("Tickets:", tickets)
     
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error("Error al obtener tickets:", error));
 });
 
-function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
+function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
 
     fetch('cambiar_estado.php', {
         method: 'POST',
@@ -31,7 +32,8 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
         },
         body: JSON.stringify({
             id: ticketId,
-            estado: nuevoEstado
+            estado: nuevoEstado,
+            fechaHorafin: fechafin // Enviar fecha de finalización si se proporciona
         })
     })
     .then(response => response.json())
@@ -92,7 +94,7 @@ function tasignaciones(ticketId, servicio, fechasig) {
 }
 
 
-function filtrarTickets(estado) {
+function filtrarTickets(estado, serv) {
     const buttons = document.querySelectorAll('.btn-group button');
     buttons.forEach(button => {
         if (button.id === estado) {
@@ -102,7 +104,9 @@ function filtrarTickets(estado) {
         }
     });
 
+    // Actualizar la variable global con el servicio seleccionado
     const ticketsFiltrados = tickets.filter(ticket => ticket.idestado === estado);
+
     const tbody = document.getElementById('tickets-body');
     tbody.innerHTML = '';
 
@@ -124,7 +128,7 @@ function filtrarTickets(estado) {
         } else if (estado === '2') {
             acciones = `
                 <div>
-                    <small class="d-block">Asignado a: ${ticket.servicioSocial}</small>
+                    <small class="d-block">Asignado a: ${serv}</small>
                     <button class="btn btn-primary btn-sm mt-1" onclick="mostrarModalFinalizacion(${ticket.ID})">
                         <i class="material-icons">done_all</i> Finalizar
                     </button>
@@ -133,7 +137,7 @@ function filtrarTickets(estado) {
         } else if (estado === '3') {
             acciones = `
                 <div class="text-center">
-                    <small class="d-block">Completado por: ${ticket.servicioSocial}</small>
+                    <small class="d-block">Completado por: ${serv}</small>
                     <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
                 </div>
             `;
@@ -164,7 +168,6 @@ fetch('datoserv.php')
         console.log("Serv:", serviciosSociales);
         // Suponiendo que tienes una función para llenar los datos
 
-        filtrarTickets('1'); // Llamar a la función para filtrar los tickets por estado 'Espera'
     })
 
 function mostrarModalAsignacion(ticketId) {
@@ -188,7 +191,8 @@ function mostrarModalAsignacion(ticketId) {
 function asignarServicioSocial() {
     const select = document.getElementById('servicio-social-select');
     const servicioId = select.value;
-
+    servactual = servicioId;
+    
     if (!servicioId) {
         alert("Por favor seleccione un servicio social");
         return;
@@ -201,6 +205,7 @@ function asignarServicioSocial() {
     const servicioSeleccionado = serviciosSociales.find(s => s.id === servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
 
+
     const ticketIndex = tickets.findIndex(t => t.id === ticketActual);
     if (ticketIndex !== -1) {
         tickets[ticketIndex].estado = "2";
@@ -211,14 +216,12 @@ function asignarServicioSocial() {
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
-    actualizarEstadoTicket(ticketActual, "2", () => {
-        filtrarTickets('2'); // Redirigir a Iniciados automáticamente
-    });
+    actualizarEstadoTicket(ticketActual, "2", () => {filtrarTickets('2', nombreServicio);}, fechaHoraFinalizacion);
 }
 
 function rechazarTicket(ticketId) {
     if (confirm("¿Está seguro que desea rechazar este ticket?")) {
-        actualizarEstadoTicket(ticketId, "4", () => {filtrarTickets('4');});
+        actualizarEstadoTicket(ticketId, "4", () => {filtrarTickets('4','');}, '');
     }
 }
 
@@ -246,17 +249,19 @@ function finalizarTicket() {
     const fechaHoraFinalizacion = `${fecha} ${hora}`;
     const ticketIndex = tickets.findIndex(t => t.ID == ticketActual);
 
+    
+    const servicioSeleccionado = serviciosSociales.find(s => s.id === servactual);
+    const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
+
     console.log("Ticket index:", ticketIndex);
     console.log("Ticket actual:", ticketActual);
 
 
     if (ticketIndex !== -1) {
-        //tickets[ticketIndex].idestado = "3";
+
         tickets[ticketIndex].horafin = fechaHoraFinalizacion;
-
         bootstrap.Modal.getInstance(document.getElementById('finalizarModal')).hide();
-
-        actualizarEstadoTicket(ticketActual, "3", () => {filtrarTickets('3');});
+        actualizarEstadoTicket(ticketActual, "3", () => {filtrarTickets('3', nombreServicio);}, fechaHoraFinalizacion);
     }
 
 }
