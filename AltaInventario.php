@@ -36,7 +36,7 @@
         </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg custom-navbar mb-4">
+        <nav class="navbar navbar-expand-lg custom-navbar mb-4">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -53,8 +53,14 @@
                             <li><a class="dropdown-item" href="AltaSoportes.php">Alta Soportes</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Consultas.php">Consultas</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Consultas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="soporteLab.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="ticketAdmin.php">Equipos</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Historial.php">Historial</a>
