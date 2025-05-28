@@ -4,7 +4,7 @@ let ticketActual = null;
 let serviciosSociales = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/SGT-Boostrap/datostkt.php')
+    fetch('datostkt.php')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
 
-    fetch('/SGT-Boostrap/cambiar_estado.php', {
+    fetch('cambiar_estado.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback) {
 }
 
 function tasignaciones(ticketId, servicio, fechasig) {
-    fetch('/SGT-Boostrap/asignacion.php', {
+    fetch('asignacion.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -152,7 +152,7 @@ function filtrarTickets(estado) {
 }
 
 
-fetch('/SGT-Boostrap/datoserv.php')
+fetch('datoserv.php')
     .then(response => response.json())
     .then(datos => {
         console.log(datos);
