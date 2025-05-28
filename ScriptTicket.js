@@ -218,10 +218,7 @@ function asignarServicioSocial() {
 
 function rechazarTicket(ticketId) {
     if (confirm("¿Está seguro que desea rechazar este ticket?")) {
-        actualizarEstadoTicket(ticketId, "4", () => {
-            tickets = tickets.filter(ticket => ticket.id !== ticketId);
-            filtrarTickets('4');
-        });
+        actualizarEstadoTicket(ticketId, "4", () => {filtrarTickets('4');});
     }
 }
 
@@ -257,22 +254,12 @@ function finalizarTicket() {
         //tickets[ticketIndex].idestado = "3";
         tickets[ticketIndex].horafin = fechaHoraFinalizacion;
 
-
         bootstrap.Modal.getInstance(document.getElementById('finalizarModal')).hide();
-        actualizarEstadoTicket(ticketActual, "3", () => {
-            filtrarTickets('3');
-        });
+
+        actualizarEstadoTicket(ticketActual, "3", () => {filtrarTickets('3');});
     }
 
 }
 
-// Datos de servicio social para usar en el modal
-//window.serviciosSociales = [
-  //  { id: 1, nombre: "Ana Rodríguez" },
-   // { id: 2, nombre: "Carlos Méndez" },
-    //{ id: 3, nombre: "Diana Fernández" },
-   // { id: 4, nombre: "Eduardo Jiménez" },
-   // { id: 5, nombre: "Gabriela Soto" }
-//];
 
 
