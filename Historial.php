@@ -23,7 +23,7 @@
 
     <!-- Navigation -->
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
+         <nav class="navbar navbar-expand-lg custom-navbar mb-4">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -35,31 +35,46 @@
                             Alta
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/SoportesAntiguos.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
+                            <li><a class="dropdown-item" href="altaUsuario.php">Alta Usuario</a></li>
+                            <li><a class="dropdown-item" href="AltaSoportes.php">Alta Soportes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Consultas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="soporteLab.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="ticketAdmin.php">Equipos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/SGT-Boostrap/Consultas.php">Consultas</a>
+                        <a class="nav-link" href="Historial.php">Historial</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/SGT-Boostrap/Historial.php">Historial</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Soporte
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="soporteLab.php">Mantenimiento</a></li>
+                            <li><a class="dropdown-item" href="ticketAdmin.php">Soporte Tecnico</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Estadisticas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasSS.php">Estadisticas Servicio</a></li>
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasUsuario.php">Estadisticas Usuario</a></li>
+                            <li><a class="dropdown-item" href="EstadisticasSS.php">Estadisticas Servicio</a></li>
+                            <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadisticas Usuario</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
+                        <a class="nav-link" href="Ticket.php">Tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesion</a>
+                        <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
