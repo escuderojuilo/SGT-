@@ -77,8 +77,16 @@ function tasignaciones(ticketId, servicio, fechasig) {
     })
 
     .catch(error => {
-       console.error('Error en la solicitud:', error);
-        alert(`Ocurrió un error al intentar actualizar la asignación del ticket ${ticketId}. ${servicio}`);
+        console.error('Error en la solicitud:', error);
+    
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = `Ocurrió un error al intentar actualizar la asignación del ticket ${ticketId}. Detalles: ${error}`;
+    
+        // Ocultar el mensaje después de 5 segundos (opcional)
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 5000);
     });
 
 }
