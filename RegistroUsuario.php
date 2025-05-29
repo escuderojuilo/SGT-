@@ -25,7 +25,7 @@
             </div>
         </div>
 
-    <a href="pagina-anterior.html" class="back-button btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Regresar">
+    <a href="/SGT-Boostrap/index.php" class="back-button btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Regresar">
         <i class="bi bi-arrow-left" style="font-size: 1.5rem;"></i>
     </a>
 

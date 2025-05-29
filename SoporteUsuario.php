@@ -9,13 +9,13 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.bootstrap5.min.css">
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="ticketAdmin.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/SoporteUsuario.css">
 </head>
 <body>
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/SOPORTEC/PagWebHD.jpg" alt="SOPORTEC" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC" class="w-100">
             </div>
         </div>
 
