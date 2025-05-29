@@ -43,7 +43,6 @@ function servicio(){
              $stmt->bind_param('sssiissssiisi', $nombre, $pat, $mat, $numero, $tel, $mai, $passwordHash, $stat, $cubic, $rol, $depa, $tok, $confi);
  
              if ($stmt ->execute()) {
-                echo 'Registro exitoso';
                 envmail($nombre, $mai,$tok);
              } else {
                  echo 'Error ' ;

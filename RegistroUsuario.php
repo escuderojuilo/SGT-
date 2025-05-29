@@ -73,7 +73,7 @@
                                         <label for="cubiculo" class="form-label">Cubículo:</label>
                                         <div class="input-group">
                                             <span class="input-group-text">Edificio</span>
-                                            <select class="form-select" id="cub">
+                                            <select class="form-select" id="cub" name="cub">
                                                 <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="D">D</option>
@@ -120,7 +120,7 @@
                     <p>Se ha registrado correctamente, por favor verifica tu correo para activar tu cuenta.</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="index.php" class="btn btn-success">Aceptar</a>
+                    <a href="/SGT-Boostrap/index.php" class="btn btn-success">Aceptar</a>
                 </div>
             </div>
         </div>
