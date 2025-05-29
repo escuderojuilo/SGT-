@@ -13,6 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuario.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body class="bg-secondary">
     
@@ -22,6 +24,10 @@
                 <img src="imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
+
+    <a href="pagina-anterior.html" class="back-button btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Regresar">
+        <i class="bi bi-arrow-left" style="font-size: 1.5rem;"></i>
+    </a>
 
     <div class="container my-5">
         <div class="row justify-content-center">
