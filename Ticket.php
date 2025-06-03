@@ -89,13 +89,13 @@
     
                         <div class="d-flex justify-content-center mb-4">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-danger" onclick="filtrarTickets('En espera')">
+                                <button type="button" class="btn btn-danger" onclick="filtrarTickets('1')">
                                     <i class="material-icons">schedule</i> En Espera
                                 </button>
-                                <button type="button" class="btn btn-warning" onclick="filtrarTickets('Iniciado')">
+                                <button type="button" class="btn btn-warning" onclick="filtrarTickets('2')">
                                     <i class="material-icons">play_arrow</i> Iniciados
                                 </button>
-                                <button type="button" class="btn btn-success" onclick="filtrarTickets('Finalizado')">
+                                <button type="button" class="btn btn-success" onclick="filtrarTickets('3')">
                                     <i class="material-icons">check_circle</i> Finalizados
                                 </button>
                             </div>
