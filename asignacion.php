@@ -9,10 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar los datos
 
-    if (isset($input['idtkt']) && isset($input['idserv']) && isset($input['fecha'])) {
+    if (isset($input['idtkt']) && isset($input['idserv']) && isset($input['fecha']) && isset($input['sechoja'])) {
         $ticketId = $input['idtkt'];
         $servicioid = $input['idserv'];
         $fechasig = $input['fecha'];
+        $hoja = $input['sechoja'];
     
         // Conectar a la base de datos
         if ($db->connect_error) {
@@ -24,12 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "SELECT ID_UC FROM personal_uc WHERE ID_USR = '$servicioid' ";
         $result = mysqli_query($db, $query);
         $cambio = mysqli_fetch_assoc($result);
-        
-    
 
         // Actualizar el estado del ticket
         $stmt = $db->prepare("INSERT INTO asignacion (ID_TKT, ID_UC, FECHA_ASIG) VALUES (?, ?, ?)");
         $stmt->bind_param('iis', $ticketId, $cambio['ID_UC'] , $fechasig);
+
 
         if ($stmt->execute()) {
             http_response_code(response_code: 200);
@@ -40,7 +40,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $stmt->close();
+
+        switch ($hoja) {
+            case 'Hoja chica':
+                $stmt2 = $db->prepare("INSERT INTO asesoria (ID_TKT) VALUES (?)");
+                $stmt2->bind_param('i', $ticketId);
+                $stmt2->execute();
+                break;
+            case 'Hoja grande':
+                $stmt2 = $db->prepare("INSERT INTO soporte (ID_TKT) VALUES (?)");
+                $stmt2->bind_param('i', $ticketId);
+                $stmt2->execute();
+                break;
+            default:
+                http_response_code(response_code: 400);
+                echo json_encode(value: ['success' => false, 'message' => 'Hoja de asignación no válida']);
+                exit;
+        }
+
+
+        $stmt2->close();
+
+        
         $db->close();
+
+
     } else {
         echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
     }

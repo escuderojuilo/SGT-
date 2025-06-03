@@ -5,7 +5,7 @@ let serviciosSociales = [];
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/SGT-Boostrap/datostkt.php')
+    fetch('datostkt.php')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
 
-    fetch('/SGT-Boostrap/cambiar_estado.php', {
+    fetch('cambiar_estado.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,8 +53,8 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
     });
 }
 
-function tasignaciones(ticketId, servicio, fechasig) {
-    fetch('/SGT-Boostrap/asignacion.php', {
+function tasignaciones(ticketId, servicio, fechasig, hoja) {
+    fetch('asignacion.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,8 @@ function tasignaciones(ticketId, servicio, fechasig) {
         body: JSON.stringify({
             idtkt: ticketId,
             idserv: servicio,
-            fecha: fechasig
+            fecha: fechasig, 
+            sechoja: hoja // Enviar el tipo de hoja
         })
     })
     .then(response => {
@@ -191,9 +192,16 @@ function mostrarModalAsignacion(ticketId) {
 function asignarServicioSocial() {
     const select = document.getElementById('servicio-social-select');
     const servicioId = select.value;
+    const hojaSelect = document.getElementById('tipo-hoja');
+    const tipoHoja = hojaSelect.value;
     
     if (!servicioId) {
         alert("Por favor seleccione un servicio social");
+        return;
+    }
+
+    if (!tipoHoja) {
+        alert("Por favor seleccione el tipo de hoja");
         return;
     }
 
@@ -211,7 +219,7 @@ function asignarServicioSocial() {
         tickets[ticketIndex].servicioSocial = nombreServicio;
     }
 
-    tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion);
+    tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion, tipoHoja);
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
@@ -248,9 +256,6 @@ function finalizarTicket() {
     const fechaHoraFinalizacion = `${fecha} ${hora}`;
     const ticketIndex = tickets.findIndex(t => t.ID == ticketActual);
 
-    
-    
-
     console.log("Ticket index:", ticketIndex);
     console.log("Ticket actual:", ticketActual);
 
@@ -263,6 +268,8 @@ function finalizarTicket() {
     }
 
 }
+
+
 
 
 
