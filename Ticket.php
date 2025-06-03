@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="Ticket.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/Ticket.css">
     <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="IMG/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
@@ -71,7 +71,7 @@
                         <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>
+                        <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
@@ -186,8 +186,8 @@
     <!-- Script personalizado -->
     <script>
         // Variables globales para el tipo de usuario
-        const isAdmin = <?php echo $_SESSION['user_type'] === 'admin' ? 'true' : 'false'; ?>;
-        const currentServiceSocial = '<?php echo $_SESSION['service_social_name'] ?? ''; ?>';
+        //const isAdmin = <?php //echo $_SESSION['user_type'] === 'admin' ? 'true' : 'false'; ?>;
+       // const currentServiceSocial = '<?php //echo $_SESSION['service_social_name'] ?? ''; ?>';
     </script>
     <script src="ScriptTicket.js"></script>
 </body>
