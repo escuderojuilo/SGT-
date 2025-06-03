@@ -32,9 +32,9 @@
                             Alta
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                            <li><a class="dropdown-item" href="altaUsuario.php">Alta Usuario</a></li>
-                            <li><a class="dropdown-item" href="AltaSoportes.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/altaUsuario.php">Alta Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,20 +42,20 @@
                             Consultas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="soporteLab.php">Usuario</a></li>
-                            <li><a class="dropdown-item" href="ticketAdmin.php">Equipos</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Historial.php">Historial</a>
+                        <a class="nav-link" href="/SGT-Boostrap/Historial.php">Historial</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Soporte
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="soporteLab.php">Mantenimiento</a></li>
-                            <li><a class="dropdown-item" href="ticketAdmin.php">Soporte Tecnico</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/soporteLab.php">Mantenimiento</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ticketAdmin.php">Soporte Tecnico</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -63,12 +63,12 @@
                             Estadisticas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="EstadisticasSS.php">Estadisticas Servicio</a></li>
-                            <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadisticas Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasSS.php">Estadisticas Servicio</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasUsuario.php">Estadisticas Usuario</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Ticket.php">Tickets</a>
+                        <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>

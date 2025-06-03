@@ -8,7 +8,7 @@
 
     $auth = $_SESSION['login'] ?? false;
 
-    dispotkt();
+    equipo();
 
     var_dump($_SESSION);
 

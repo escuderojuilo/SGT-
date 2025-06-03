@@ -191,19 +191,34 @@ function logusr(){
             if($usuario['confirmado'] === '1'){
 
                 if($resultado->num_rows){
+
+                    if (!empty($usuario['TOKEN'])) {
+                        // ❌ Ya tiene una sesión activa
+                        echo "Este usuario ya tiene una sesión activa. Cierra la otra sesión antes de continuar.";
+                        exit();
+                    }
                     
                     $auth = password_verify($pass, $usuario['PASS']);
 
                     if($auth) {
+                      
                         //El usuario está autenticado
                         session_start();
+                        $_SESSION['ID_USR'] = $usuario['ID_USR'];
+                        $_SESSION['TOKEN'] = session_id();
+
+
+
+                        //Insertar un token de sesión para el usuario para asegurar que solo este su sesion activa
+                        $stmt = $db->prepare("UPDATE usuario SET TOKEN = ? WHERE ID_USR = ?");
+                        $stmt->bind_param("si", $_SESSION['TOKEN'], $usuario['ID_USR']);
+                        $stmt->execute();                       
                         
                         //LLenar el arreglo de la sesión
-
                         $_SESSION['EMAIL'] = $usuario['EMAIL'];
                         $_SESSION['login'] = true;
-                        $_SESSION['ID_USR'] = $usuario['ID_USR'];
                         $_SESSION['ID_ROL'] = $usuario['ID_ROL'];
+
                         
                         usr_acc();
                         //header('Location: /ticket.php');
@@ -389,7 +404,7 @@ function verificarcuenta(){
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            // Token válido, actualizar estado del usuario
+            // Token válido, actualizar estado del usuario y regresa a null el tocken
             $stmt->close();
             $stmt = $db->prepare("UPDATE usuario SET TOKEN=NULL, confirmado='1' WHERE TOKEN=?");
             $stmt->bind_param("s", $token);

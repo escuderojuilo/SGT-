@@ -1,3 +1,20 @@
+<?php
+
+require __DIR__ ."/includes/funciones.php";
+
+session_start(); if(!isset($_SESSION)){
+    session_start();
+}
+
+$auth = $_SESSION['login'] ?? false;
+
+dispotkt();
+
+var_dump($_SESSION);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +32,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC" class="w-100">
             </div>
         </div>
 
@@ -59,6 +76,10 @@
                         <div class="mb-3">
                             <label for="serie" class="form-label">No. Serie:</label>
                             <input type="text" class="form-control" id="serie" name="serie">
+                        </div>
+                        <div class="mb-3">
+                            <label for="serie" class="form-label">Cubiculo:</label>
+                            <input type="text" class="form-control" id="cubi" name="cubi">
                         </div>
                         
                         <div class="mb-3">
