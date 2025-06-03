@@ -169,8 +169,8 @@
                     <label for="tipo-hoja" class="form-label">Tipo de hoja</label>
                         <select id="tipo-hoja" class="form-select">
                             <option value="" selected disabled>Seleccione tipo de hoja</option>
-                            <option value="Hoja chica">Hoja chica</option>
-                            <option value="Hoja grande">Hoja grande</option>
+                            <option value="Hojachica">Hoja chica</option>
+                            <option value="Hojagrande">Hoja grande</option>
                         </select>
                 </div>
                 <div class="modal-footer">

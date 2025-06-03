@@ -39,15 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(value: ['success' => false, 'message' => 'Error al ingresar la asignación']);
         }
 
-        $stmt->close();
-
         switch ($hoja) {
-            case 'Hoja chica':
+            case 'Hojachica':
                 $stmt2 = $db->prepare("INSERT INTO asesoria (ID_TKT) VALUES (?)");
                 $stmt2->bind_param('i', $ticketId);
                 $stmt2->execute();
                 break;
-            case 'Hoja grande':
+            case 'Hojagrande':
                 $stmt2 = $db->prepare("INSERT INTO soporte (ID_TKT) VALUES (?)");
                 $stmt2->bind_param('i', $ticketId);
                 $stmt2->execute();
@@ -58,10 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
         }
 
-
+        $stmt->close();
         $stmt2->close();
-
-        
         $db->close();
 
 
