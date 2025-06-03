@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="css/Ticket.css"> <!-- Reutilizamos el mismo CSS -->
+    <link rel="stylesheet" href="Ticket.css">
     <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -16,67 +16,53 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="IMG/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg custom-navbar mb-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Alta
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                            <li><a class="dropdown-item" href="altaUsuario.php">Alta Usuario</a></li>
-                            <li><a class="dropdown-item" href="AltaSoportes.php">Alta Soportes</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Consultas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="soporteLab.php">Usuario</a></li>
-                            <li><a class="dropdown-item" href="ticketAdmin.php">Equipos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Historial.php">Historial</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Soporte
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="soporteLab.php">Mantenimiento</a></li>
-                            <li><a class="dropdown-item" href="ticketAdmin.php">Soporte Tecnico</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Estadisticas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="EstadisticasSS.php">Estadisticas Servicio</a></li>
-                            <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadisticas Usuario</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Ticket.php">Tickets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Alta
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
+                                <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
+                                <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultas.php">Consultas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Historial.php">Historial</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Estadísticas
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="EstadisticasSS.php">Estadísticas Servicio</a></li>
+                                <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadísticas Usuario</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Ticket.php">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="InicioSesion.php">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <div class="container my-5">
         <div class="row justify-content-center">
@@ -86,19 +72,21 @@
                         <h4 class="mb-0">Gestión de Tickets</h4>
                     </div>
                     <div class="card-body">
+    
                         <div class="d-flex justify-content-center mb-4">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-danger" id='1' onclick="filtrarTickets('1')">
+                                <button type="button" class="btn btn-danger" onclick="filtrarTickets('En espera')">
                                     <i class="material-icons">schedule</i> En Espera
                                 </button>
-                                <button type="button" class="btn btn-warning" id='2' onclick="filtrarTickets('2')">
+                                <button type="button" class="btn btn-warning" onclick="filtrarTickets('Iniciado')">
                                     <i class="material-icons">play_arrow</i> Iniciados
                                 </button>
-                                <button type="button" class="btn btn-success" id='3' onclick="filtrarTickets('3')">
+                                <button type="button" class="btn btn-success" onclick="filtrarTickets('Finalizado')">
                                     <i class="material-icons">check_circle</i> Finalizados
                                 </button>
                             </div>
                         </div>
+            
 
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -121,8 +109,6 @@
             </div>
         </div>
     </div>
-
-    
 
     <!-- Modal para finalizar ticket -->
     <div class="modal fade" id="finalizarModal" tabindex="-1" aria-hidden="true">
@@ -150,6 +136,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal para asignar servicio social -->
     <div class="modal fade" id="asignarModal" tabindex="-1" aria-labelledby="asignarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -158,26 +145,37 @@
                     <h5 class="modal-title">Asignar servicio social al ticket <span id="ticket-id"></span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-            <div class="modal-body">
-                <label for="servicio-social-select" class="form-label">Selecciona un estudiante:</label>
-                <select id="servicio-social-select" class="form-select">
-                    <option value="" selected disabled>Seleccione servicio social</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="asignarServicioSocial()">Asignar</button>
-            </div>
+                <div class="modal-body">
+                    <label for="servicio-social-select" class="form-label">Selecciona un estudiante:</label>
+                    <select id="servicio-social-select" class="form-select">
+                        <option value="" selected disabled>Seleccione servicio social</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tipo-hoja" class="form-label">Tipo de hoja</label>
+                        <select id="tipo-hoja" class="form-select">
+                            <option value="" selected disabled>Seleccione tipo de hoja</option>
+                            <option value="Hoja chica">Hoja chica</option>
+                            <option value="Hoja grande">Hoja grande</option>
+                        </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="asignarServicioSocial()">Asignar</button>
+                </div>
             </div>
         </div>
     </div>
 
-
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Script personalizado -->
-    <!-- Al final del body, asegura este orden -->
-    <script src="/SGT-Boostrap/datostkt.php"></script>
-    <script src="/SGT-Boostrap/ScriptTicket.js"></script> 
+    <script>
+        // Variables globales para el tipo de usuario
+        const isAdmin = <?php echo $_SESSION['user_type'] === 'admin' ? 'true' : 'false'; ?>;
+        const currentServiceSocial = '<?php echo $_SESSION['service_social_name'] ?? ''; ?>';
+    </script>
+    <script src="ScriptTicket.js"></script>
 </body>
+</html>
 </html>
