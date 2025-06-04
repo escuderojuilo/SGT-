@@ -12,14 +12,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuario.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/altaUsuariovv.css">
 </head>
 <body class="bg-secondary">
     
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
             <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
             </div>
         </div>
 

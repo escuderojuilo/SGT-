@@ -276,10 +276,10 @@ function finalizarTicket() {
 
 function cerrarsesion()
 {
-        navigator.sendBeacon('includes/cerrarsesion.php'); 
+        navigator.sendBeacon('/includes/cerrarsesion.php'); 
 }
 
-window.addEventListener('beforeunload', cerrarSesion);
+window.addEventListener('unload', cerrarsesion);
 
 
 

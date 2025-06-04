@@ -96,5 +96,6 @@ var_dump($_SESSION);
         </div>
     </div>
     </main>
+    <script src="/SGT-Boostrap/js/global.js"></script>
 </body>
 </html>
