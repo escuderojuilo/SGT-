@@ -434,7 +434,10 @@ function crearcookie(){
         'httponly' => true, // La cookie no es accesible desde JavaScript
         'samesite' => 'Strict' // Evita el envío de cookies en solicitudes de terceros
     ]);
-    session_start();
+    
+    if(!isset($_SESSION)){
+        session_start();
+    }
 }
 
 ?>

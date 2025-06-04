@@ -274,10 +274,12 @@ function finalizarTicket() {
 
 }
 
-window.addEventListener('beforeunload', function() {
-    navigator.sendBeacon('/SGT-Boostrap/includes/cerrarsesion.php');
-});
+function cerrarsesion()
+{
+        navigator.sendBeacon('includes/cerrarsesion.php'); 
+}
 
+window.addEventListener('beforeunload', cerrarSesion);
 
 
 
