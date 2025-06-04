@@ -129,7 +129,7 @@ function filtrarTickets(estado) {
         } else if (estado === '2') {
             acciones = `
                 <div>
-                    <small class="d-block">Asignado a: ${serv}</small>
+                    <small class="d-block">Asignado a: ${ticket.NOMBRE}</small>
                     <button class="btn btn-primary btn-sm mt-1" onclick="mostrarModalFinalizacion(${ticket.ID})">
                         <i class="material-icons">done_all</i> Finalizar
                     </button>
@@ -138,7 +138,7 @@ function filtrarTickets(estado) {
         } else if (estado === '3') {
             acciones = `
                 <div class="text-center">
-                    <small class="d-block">Completado por: ${serv}</small>
+                    <small class="d-block">Completado por: ${ticket.NORMAL}</small>
                     <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
                 </div>
             `;
@@ -226,10 +226,16 @@ function asignarServicioSocial() {
 }
 
 function rechazarTicket(ticketId) {
+
+    const now = new Date();
+    const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
+     ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;    
     if (confirm("¿Está seguro que desea rechazar este ticket?")) {
-        actualizarEstadoTicket(ticketId, "4", () => {filtrarTickets('4');}, '');
-    }
-}
+        actualizarEstadoTicket(ticketId, "4", () => {
+            tickets = tickets.filter(ticket => ticket.id !== ticketId);
+            filtrarTickets('4');
+        }, fechaHoraFinalizacion);
+}}
 
 function mostrarModalFinalizacion(ticketId) {
     ticketActual = ticketId;
@@ -267,6 +273,10 @@ function finalizarTicket() {
     }
 
 }
+
+window.addEventListener('beforeunload', function() {
+    navigator.sendBeacon('/SGT-Boostrap/includes/cerrarsesion.php');
+});
 
 
 

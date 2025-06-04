@@ -424,4 +424,17 @@ function verificarcuenta(){
 }
 
 
+
+function crearcookie(){
+    session_set_cookie_params([
+        'lifetime' => 0, // La cookie expira al cerrar el navegador
+        'path' => '/',
+        'domain' => '', // Puedes especificar tu dominio si es necesario
+        'secure' => true, // Usar solo en conexiones HTTPS
+        'httponly' => true, // La cookie no es accesible desde JavaScript
+        'samesite' => 'Strict' // Evita el envío de cookies en solicitudes de terceros
+    ]);
+    session_start();
+}
+
 ?>

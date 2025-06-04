@@ -1,3 +1,14 @@
+<?php
+    require __DIR__ ."/includes/funciones.php";
+
+    crearcookie();
+
+    $auth = $_SESSION['login'] ?? false;
+    var_dump($_SESSION);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
