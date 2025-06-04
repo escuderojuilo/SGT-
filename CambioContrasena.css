@@ -1,0 +1,14 @@
+.password-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-top: 30px;
+}
+
+.form-title {
+    margin-bottom: 25px;
+    text-align: center;
+}
