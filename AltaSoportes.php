@@ -44,8 +44,8 @@
                             Consultas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/soporteLab.php">Usuario</a></li>
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/ticketAdmin.php">Equipos</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -73,12 +73,12 @@
                         <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>
+                        <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     
     <!-- Main Content -->
     <div class="container main-content-container">
