@@ -8,14 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="CorreoP.css" rel="stylesheet">
+    <link href="/SGT-Boostrap/css/CorreoP.css" rel="stylesheet">
 </head>
 <body>
     <!-- Encabezado que ocupa todo el ancho con Bootstrap -->
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/SOPORTEC/PagWebHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-primary btn-recovery">Enviar enlace de recuperación</button>
                 
                 <div class="back-to-login">
-                    <a href="login.html" class="text-decoration-none">← Volver al inicio de sesión</a>
+                    <a href="/SGT-Boostrap/index.php" class="text-decoration-none">← Volver al inicio de sesión</a>
                 </div>
             </form>
         </div>

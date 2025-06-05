@@ -2,7 +2,6 @@
 <?php
 
 require __DIR__ ."/includes/funciones.php";
-
 logusr();
 
 ?>
@@ -18,86 +17,87 @@ logusr();
     <link href="/SGT-Boostrap/css/InicioSesion.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-    <style>
-        :root {
-            --soporte-blue: #0d6efd;
-            --soporte-dark: #212529;
-            --soporte-light: #f8f9fa;
-        }
-        
-        .btn-primary {
-            background-color: var(--soporte-blue);
-            border: none;
-            padding: 10px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0b5ed7;
-            transform: scale(1.03);
-        }
-        
-        /* Botón de contacto flotante */
-        .contact-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--soporte-blue);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.5);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .contact-btn:hover {
-            background-color: #0b5ed7;
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.7);
-        }    
-        /* Animación para el botón */
 
-        
-        /* Responsividad */
-        @media (max-width: 768px) {
-            .contact-btn {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-            
-            .contact-panel {
-                width: 280px;
-                right: 20px;
-                bottom: 85px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .contact-panel {
-                width: 90%;
-                right: 5%;
-                left: 5%;
-                bottom: 80px;
-            }
-            
-            .contact-btn {
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-    </style>
+<style>
+    :root {
+    --soporte-blue: #0d6efd;
+    --soporte-dark: #212529;
+    --soporte-light: #f8f9fa;
+}
+
+.btn-primary {
+    background-color: var(--soporte-blue);
+    border: none;
+    padding: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.03);
+}
+
+/* Botón de contacto flotante */
+.contact-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--soporte-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.5);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.contact-btn:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.7);
+}    
+/* Animación para el botón *
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .contact-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .contact-panel {
+        width: 280px;
+        right: 20px;
+        bottom: 85px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-panel {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        bottom: 80px;
+    }
+    
+    .contact-btn {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+</style>
+
 <body>
     <!-- Encabezado que ocupa todo el ancho con Bootstrap -->
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
@@ -132,19 +132,21 @@ logusr();
                             </div>
                         </form>
                         <div class="mt-3 text-center">
-                            <a href="#">¿Olvidaste tu contraseña?</a>
+                            <a href="/SGT-Boostrap/CorreoP.php">¿Olvidaste tu contraseña?</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="text-center mt-3">
                     ¿No tienes una cuenta? <a href="/SGT-Boostrap/RegistroUsuario.php">Regístrate</a>
                 </div>
             </div>
         </div>
-    </div>
         <button class="contact-btn" onclick="location.href='InfoContacto.php'">
             <span class="material-icons">call</span>
         </button>
+    </div>
+    
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
