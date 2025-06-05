@@ -178,15 +178,11 @@ function logusr(){
             $errores[] = "El password es obligatorio";
         }
 
-        var_dump($email);
-
         //si no existen errores, se valida que la informacion exista dentro de la base de datos
         if(empty($errores)){
             $query = "SELECT * FROM usuario WHERE email = '$email' ";
             $resultado = mysqli_query($db,$query);
             $usuario = mysqli_fetch_assoc($resultado);
-
-            var_dump($usuario);
             
             if($usuario['confirmado'] === '1'){
 

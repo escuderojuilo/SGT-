@@ -33,9 +33,9 @@
                             <li><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</li>
                         </ul>
                             <div class="d-grid">
-                                <form action="index.php" method="post">
+                                
                                     <button  href="/SGT-Boostrap/index.php" class="btn custom-btn-continuar btn-lg">Regresar</button>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
