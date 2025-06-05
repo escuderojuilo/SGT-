@@ -22,8 +22,7 @@
     
 
     <!-- Navigation -->
-    <!-- Navigation -->
-         <nav class="navbar navbar-expand-lg custom-navbar mb-4">
+        <nav class="navbar navbar-expand-lg custom-navbar mb-4">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -45,8 +44,8 @@
                             Consultas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/soporteLab.php">Usuario</a></li>
-                            <li><a class="dropdown-item" href="/SGT-Boostrap/ticketAdmin.php">Equipos</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -78,8 +77,8 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <div class="container my-4">
         <div class="row">
