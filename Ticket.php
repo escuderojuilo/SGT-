@@ -1,7 +1,9 @@
 <?php
     require __DIR__ ."/includes/funciones.php";
 
-    crearcookie();
+    if(!isset($_SESSION)){
+        session_start();
+    }
 
     $auth = $_SESSION['login'] ?? false;
     var_dump($_SESSION);
@@ -201,6 +203,7 @@
        // const currentServiceSocial = '<?php //echo $_SESSION['service_social_name'] ?? ''; ?>';
     </script>
     <script src="ScriptTicket.js"></script>
+    <script src="/SGT-Boostrap/js/global.js"></script>
 </body>
 </html>
 </html>

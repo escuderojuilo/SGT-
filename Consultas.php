@@ -16,7 +16,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="/SGT-Boostrap/imagenes/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
     

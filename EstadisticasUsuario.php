@@ -16,7 +16,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
@@ -32,31 +32,31 @@
                                 Alta
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                                <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
-                                <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
+                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
+                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="consultas.php">Consultas</a>
+                            <a class="nav-link" href="/SGT-Boostrap/consultas.php">Consultas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Historial.php">Historial</a>
+                            <a class="nav-link" href="/SGT-Boostrap/Historial.php">Historial</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Estadísticas
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="EstadisticasSS.php">Estadísticas Servicio</a></li>
-                                <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadísticas Usuario</a></li>
+                                <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasSS.php">Estadísticas Servicio</a></li>
+                                <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasUsuario.php">Estadísticas Usuario</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Ticket.php">Tickets</a>
+                            <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="InicioSesion.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
