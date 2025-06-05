@@ -1,0 +1,78 @@
+body {
+    background-color: #f8f9fa;
+}
+.password-recovery-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+.password-recovery-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #343a40;
+}
+.btn-recovery {
+    background-color: #0d6efd;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-weight: 500;
+}
+.btn-recovery:hover {
+    background-color: #0b5ed7;
+}
+.back-to-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos para el modal de éxito */
+.modal-success-content {
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-success-header {
+    border-bottom: none;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-success-icon {
+    font-size: 5rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.modal-success-title {
+    color: #28a745;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.modal-success-text {
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.modal-success-footer {
+    border-top: none;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 2rem;
+}
+
+/* Animación para el modal */
+.modal.fade .modal-dialog {
+    transform: translate(0, -50px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translate(0, 0);
+}
