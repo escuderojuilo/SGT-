@@ -1,3 +1,18 @@
+<?php
+
+require "includes/database.php";
+$con ='SELECT usuario.NOMBRE, ticket.ID_USR, COUNT(*) as veces FROM ticket inner join usuario on ticket.ID_USR = usuario.ID_USR group by ID_USR';
+
+// Obtener los resultados
+$resul = mysqli_query($db, $con);
+
+foreach ($resul as $row) {
+    $resultados[] = $row;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -131,6 +146,13 @@
         drawChart(haceUnMes, hoy, 'todos');
     });
 
+    var resultados = <?php echo json_encode($resultados); ?>;
+
+     var dataArray = [['Actividad', 'Veces']];
+        resultados.forEach(function(fila) {
+        dataArray.push([fila.NOMBRE, parseInt(fila.veces)]);
+        });
+
     // Función para dibujar el gráfico
     function drawChart(fechaInicio, fechaFin, tipoSoporte) {
         // Mostrar mensaje de carga
@@ -139,22 +161,7 @@
         // Simular una llamada AJAX con setTimeout
         setTimeout(function() {
             // Datos de ejemplo 
-            let datosEjemplo = [
-                ['Usuario', 'Soportes solicitados'],
-                ['Juan',     11],
-                ['Maria',    2],
-                ['Pedro',    2],
-                ['Ana',      2],
-                ['Luis',     7],
-                ['Carlos',   5],
-                ['Laura',    3],
-                ['Javier',   4],
-                ['Sofia',    6],
-                ['Diego',    1],
-                ['Valeria',  8],
-                ['Fernando', 9],
-                ['Gabriela', 10]
-            ];
+          
 
             // Simular filtrado por tipo de soporte
             if (tipoSoporte !== 'todos') {
@@ -168,9 +175,9 @@
                 });
             }
 
-            currentData = datosEjemplo;
+            //currentData = datosEjemplo;
 
-            var data = google.visualization.arrayToDataTable(currentData);
+            var data = google.visualization.arrayToDataTable(dataArray);
 
             // Crear título dinámico
             let titulo = 'Solicitudes de soporte por usuario (' + formatDate(fechaInicio) + ' a ' + formatDate(fechaFin) + ')';
@@ -226,7 +233,7 @@
 
     // Función para exportar a Excel
     document.getElementById('btnExportarExcel').addEventListener('click', function() {
-        if (currentData.length === 0) {
+        if (dataArray.length === 0) {
             alert('No hay datos para exportar');
             return;
         }
@@ -235,7 +242,7 @@
         const wb = XLSX.utils.book_new();
         
         // Convertir nuestros datos a una hoja de trabajo
-        const ws = XLSX.utils.aoa_to_sheet(currentData);
+        const ws = XLSX.utils.aoa_to_sheet(dataArray);
         
         // Agregar la hoja de trabajo al libro
         XLSX.utils.book_append_sheet(wb, ws, "EstadisticasUsuarios");
@@ -246,6 +253,7 @@
         
         XLSX.writeFile(wb, nombreArchivo);
     });
+
     </script>
 </body>
 </html>

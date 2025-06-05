@@ -194,7 +194,7 @@ function logusr(){
 
                     if (!empty($usuario['TOKEN'])) {
                         // ❌ Ya tiene una sesión activa
-                        echo "Este usuario ya tiene una sesión activa. Cierra la otra sesión antes de continuar.";
+                        header('Location: /SGT-Boostrap/SesionActiva.php');
                         exit();
                     }
                     
@@ -425,19 +425,8 @@ function verificarcuenta(){
 
 
 
-function crearcookie(){
-    session_set_cookie_params([
-        'lifetime' => 0, // La cookie expira al cerrar el navegador
-        'path' => '/',
-        'domain' => '', // Puedes especificar tu dominio si es necesario
-        'secure' => true, // Usar solo en conexiones HTTPS
-        'httponly' => true, // La cookie no es accesible desde JavaScript
-        'samesite' => 'Strict' // Evita el envío de cookies en solicitudes de terceros
-    ]);
-    
-    if(!isset($_SESSION)){
-        session_start();
-    }
-}
+
+
+
 
 ?>
