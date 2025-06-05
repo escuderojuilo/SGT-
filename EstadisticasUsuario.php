@@ -35,46 +35,60 @@ foreach ($resul as $row) {
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg custom-navbar">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Alta
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
-                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaUsuario.php">Alta Usuario</a></li>
-                                <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/SGT-Boostrap/consultas.php">Consultas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/SGT-Boostrap/Historial.php">Historial</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Estadísticas
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasSS.php">Estadísticas Servicio</a></li>
-                                <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasUsuario.php">Estadísticas Usuario</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesión</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg custom-navbar mb-4">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Alta
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/altaUsuario.php">Alta Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Consultas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/SGT-Boostrap/Historial.php">Historial</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Soporte
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/soporteLab.php">Mantenimiento</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ticketAdmin.php">Soporte Tecnico</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Estadisticas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasSS.php">Estadisticas Servicio</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/EstadisticasUsuario.php">Estadisticas Usuario</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/SGT-Boostrap/Ticket.php">Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesion</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
