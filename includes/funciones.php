@@ -418,10 +418,12 @@ function verificarcuenta(){
 }
 
 function recucontra(){
+
+    try{
     //Importar credenciales
-    require "includes/database.php";
-    //Importar la funcion para enviar el correo electronico
-    require "includes/enviar_mail.php";
+        require "database.php";
+        //Importar la funcion para enviar el correo electronico
+        require "includes/enviar_mail.php";
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -435,13 +437,18 @@ function recucontra(){
             $usuario = mysqli_fetch_assoc($resultado);
 
             if($resultado->num_rows){
-                
+
                 contraseña($usuario['NOMBRE'], $email);
 
             }else{
                 echo "El usuario no existe";
             }
         }
+    }
+    }
+
+    catch(\Throwable $e) {
+        //echo $e->getMessage();
     }
 }
 

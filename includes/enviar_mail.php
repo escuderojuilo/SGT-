@@ -155,7 +155,7 @@ function contraseña($nombre, $mai){
             </div>
             <p>Para continuar con la actulizacion de contraeña, dar clic en le sigueinte enlace:</p>
             <div class="button-container">
-                <a href="" . class="button">Confirmar registro</a>
+                <a href="http://192.168.115.85/nueva-contraseña.php" . class="button">Confirmar registro</a>
             </div>
         </div>
         <div class="footer">
@@ -166,7 +166,7 @@ function contraseña($nombre, $mai){
 </html>
 ';
         
-$mail->AltBody = 'Hola, ' . $nombre . '. Tu usuario es: ' . $mai ;    
+$mail->AltBody = 'Hola, ' . $nombre . '. Tu usuario es: ' . $mai . '. Para continuar con la actualización de contraseña, por favor visita: ' . "http://192.168.115.85/nueva-contraseña.php";    
 
         $mail->send();
         
