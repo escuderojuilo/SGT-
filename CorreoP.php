@@ -1,3 +1,11 @@
+<?php
+
+require __DIR__ ."/includes/funciones.php";
+recucontra();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,8 +33,7 @@
         <div class="password-recovery-container">
             <h2 class="password-recovery-title">Recuperar Contraseña</h2>
             <p>Por favor ingresa tu correo electrónico registrado. Te enviaremos un enlace para restablecer tu contraseña.</p>
-            
-            <form id="recoveryForm">
+            <form id="recoveryForm" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" required placeholder="tu@email.com">

@@ -15,7 +15,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/encabezado.jpg" alt="SOPORTEC" class="w-100">
+                <img src="imagenes/encabezadoHD.jpg" alt="SOPORTEC" class="w-100">
             </div>
         </div>
         

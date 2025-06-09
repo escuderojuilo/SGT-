@@ -203,8 +203,6 @@ function logusr(){
                         $_SESSION['ID_USR'] = $usuario['ID_USR'];
                         $_SESSION['TOKEN'] = session_id();
 
-
-
                         //Insertar un token de sesión para el usuario para asegurar que solo este su sesion activa
                         $stmt = $db->prepare("UPDATE usuario SET TOKEN = ? WHERE ID_USR = ?");
                         $stmt->bind_param("si", $_SESSION['TOKEN'], $usuario['ID_USR']);
@@ -419,6 +417,33 @@ function verificarcuenta(){
     }
 }
 
+function recucontra(){
+    //Importar credenciales
+    require "includes/database.php";
+    //Importar la funcion para enviar el correo electronico
+    require "includes/enviar_mail.php";
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+        $email = mysqli_real_escape_string($db,filter_var($_POST['email'],FILTER_VALIDATE_EMAIL));
+
+        if(!$email){
+            echo "El email es obligatorio o no es válido";
+        }else{
+            $query = "SELECT * FROM usuario WHERE email = '$email' ";
+            $resultado = mysqli_query($db,$query);
+            $usuario = mysqli_fetch_assoc($resultado);
+
+            if($resultado->num_rows){
+                
+                contraseña($usuario['NOMBRE'], $email);
+
+            }else{
+                echo "El usuario no existe";
+            }
+        }
+    }
+}
 
 
 
