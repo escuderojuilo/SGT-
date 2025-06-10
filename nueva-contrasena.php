@@ -1,3 +1,10 @@
+<?php
+
+require __DIR__ ."/includes/funciones.php";
+cambio_contra();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,14 +35,14 @@
             <form id="passwordForm" action="contrasena-cambiada-exito.php" method="POST">
                 <div class="mb-3">
                     <label for="newPassword" class="form-label">Nueva Contraseña</label>
-                    <input type="password" class="form-control" id="newPassword" required 
-                           pattern=".{8,}" title="Mínimo 8 caracteres">
+                    <input type="password" class="form-control" id="newPassword" name="newPassword" required 
+                           pattern=".{4,}" title="Mínimo 8 caracteres">
                     <div class="form-text">Mínimo 8 caracteres</div>
                 </div>
                 
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="confirmPassword" required>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"  required>
                 </div>
                 
                 <div class="d-grid gap-2">
