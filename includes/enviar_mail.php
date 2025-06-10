@@ -145,7 +145,7 @@ function contraseña($nombre, $mai){
 <body>
     <div class="container">
         <div class="header">
-            <h1>¡Bienvenid@ al Sistema de gestion de tickets!</h1>
+            <h1>¡Bienvenid@ al Sistema de gestión de tickets!</h1>
         </div>
         <div class="content">
             <h2>Hola, ' . htmlspecialchars($nombre) . ' 👋</h2>
@@ -153,9 +153,9 @@ function contraseña($nombre, $mai){
             <div class="credentials">
                 <p><strong>Usuario:</strong> ' . htmlspecialchars($mai) . '</p>
             </div>
-            <p>Para continuar con la actulizacion de contraeña, dar clic en le sigueinte enlace:</p>
+            <p>Para continuar con la actulizacion de contraseña, dar clic en le sigueinte enlace:</p>
             <div class="button-container">
-                <a href="http://192.168.115.85/nueva-contraseña.php" . class="button">Confirmar registro</a>
+                <a href="http://192.168.115.85/SGT-Boostrap/nueva-contrasena.php?emial='.$mai.'" . class="button">Confirmar registro</a>
             </div>
         </div>
         <div class="footer">
@@ -166,7 +166,7 @@ function contraseña($nombre, $mai){
 </html>
 ';
         
-$mail->AltBody = 'Hola, ' . $nombre . '. Tu usuario es: ' . $mai . '. Para continuar con la actualización de contraseña, por favor visita: ' . "http://192.168.115.85/nueva-contraseña.php";    
+$mail->AltBody = 'Hola, ' . $nombre . '. Tu usuario es: ' . $mai . '. Para continuar con la actualización de contraseña, por favor visita: ' . "http://192.168.115.85/SGT-Boostrap/nueva-contraseña.php?emial='.$mai.'";    
 
         $mail->send();
         

@@ -8,14 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="CambioContrasena.css">
+    <link rel="stylesheet" href="/SGT-Boostrap/css/CambioContrasena.css">
 </head>
 <body>
     <!-- Encabezado -->
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="imagenes/SOPORTEC/PagWebHD.jpg" alt="SOPORTEC" class="w-100">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC" class="w-100">
             </div>
         </div>
     </div>

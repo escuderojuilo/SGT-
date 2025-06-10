@@ -117,5 +117,7 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
         const idServicioSocial = <?php echo $idServicioSocial; ?>;
     </script>
     <script src="ScriptSS.js"></script>
+    <script src="/SGT-Boostrap/js/global.js"></script>
+
 </body>
 </html>

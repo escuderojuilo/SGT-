@@ -28,13 +28,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="EstadisticasPSS.php">Mis Estadisticas</a>
+                            <a class="nav-link" href="/SGT-Boostrap/EstadisticasPSS.php">Mis Estadisticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="TicketSS.php">Tickets Asignados</a>
+                            <a class="nav-link" href="/SGT-Boostrap/TicketSS.php">Tickets Asignados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="InicioSesion.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="/SGT-Boostrap/InicioSesion.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

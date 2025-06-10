@@ -72,20 +72,23 @@ recucontra();
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('recoveryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validar el email
-            const email = document.getElementById('email').value;
-            if(email) {
-                // Mostrar el modal de éxito
-                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                successModal.show();
-                
-                // Limpiar el formulario
-                document.getElementById('recoveryForm').reset();
-            }
-        });
+       document.getElementById('recoveryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+
+    fetch('', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'email=' + encodeURIComponent(email)
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Aquí podrías validar la respuesta de PHP si lo deseas
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+        document.getElementById('recoveryForm').reset();
+    });
+});
     </script>
 </body>
 </html>

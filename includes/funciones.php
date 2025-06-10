@@ -452,9 +452,42 @@ function recucontra(){
     }
 }
 
+function cambio_contra(){
 
+     require "includes/database.php";
 
+    if (isset($_GET['mai'])) {
+        $correo = $_GET['mai'];
 
+        // Verificar si el token existe en la base de datos
+        $stmt = $db->prepare("SELECT ID_USR FROM usuario WHERE EMAIL=? LIMIT 1");
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $stmt->store_result();
+        
+        if ($stmt-> num_rows > 0) {
+
+             if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $contra = mysqli_real_escape_string($db, $_POST['newPassword']);   
+
+            $stmt->close();
+            $stmt = $db->prepare("UPDATE usuario SET PASS=? WHERE EMAIL=?");
+            $stmt->bind_param("ss", $contra, $correo);
+            $stmt->execute();
+                    
+            }
+        } else {
+
+            echo "contraseña mala :C.";
+        }
+
+        $stmt->close();
+        $db->close();
+
+    }
+
+}
 
 
 ?>
