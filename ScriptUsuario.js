@@ -12,15 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
     filtrarUsuarios('todos'); // Mostrar todos los usuarios por defecto
 });
 //Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
-function cargarUsuarios() {
-    usuarios = [
-    { id: 1, nombre: "Admin Principal", rol: "admin", laboratorio_id: null },
-    { id: 2, nombre: "Ana Rodríguez", rol: "service_social", laboratorio_id: null },
-    { id: 3, nombre: "Carlos Méndez", rol: "service_social", laboratorio_id: null },
-    { id: 4, nombre: "Dr. García", rol: "academico", laboratorio_id: null },
-    { id: 5, nombre: "Ing. López", rol: "lab_encargado", laboratorio_id: 1 }
-    ];
-}
+fetch('datosusuario.php')
+    .then(response => response.json())
+    .then(datos => {
+        console.log(datos);
+        console.log("Contenido de data:", datos); // Verificar los datos en la consola
+
+        //guardar datos en una variable
+        usuarios = datos.map(user  => ({id: user.ID_USR, nombre: user.NOMBRE, apellido: user.AP_PAT, nombrerol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
+
+        console.log("Serv:", usuarios);
+        // Suponiendo que tienes una función para llenar los datos
+
+    })
 
 //function cargarUsuarios() {
 //        fetch('getUsuarios.php')
@@ -72,7 +76,7 @@ function filtrarUsuarios(filtro) {
     if (filtro === 'todos') {
         usuariosFiltrados = [...usuarios];
     } else {
-        usuariosFiltrados = usuarios.filter(usuario => usuario.rol === filtro);
+        usuariosFiltrados = usuarios.filter(usuario => usuario.NOM_ROL === filtro);
     }
 
     const tbody = document.getElementById('usuarios-body');

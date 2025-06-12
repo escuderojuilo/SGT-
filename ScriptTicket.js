@@ -207,7 +207,7 @@ function asignarServicioSocial() {
 
     const ticketIndex = tickets.findIndex(t => t.ID == ticketActual);
     if (ticketIndex !== -1) {
-        tickets[ticketIndex].NOMBRE = nombreServicio;
+        tickets[ticketIndex].asignado = nombreServicio;
         console.log(`Ticket ${ticketActual} actualizado con asignado: ${nombreServicio}`);
     }
 
