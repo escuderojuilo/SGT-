@@ -31,6 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     return data.length > 50 ? data.substr(0, 50) + '...' : data;
                 }
             },
+            // Nueva columna de Solución
+            { 
+                data: 'solucion',
+                render: function(data) {
+                    // Si no hay solución, mostrar "N/A"
+                    if (!data || data.trim() === '') {
+                        return 'N/A';
+                    }
+                    // Limitar a 50 caracteres con puntos suspensivos si es muy largo
+                    return data.length > 50 ? data.substr(0, 50) + '...' : data;
+                }
+            },
             { 
                 data: 'fecha_inicio',
                 className: 'text-center',
