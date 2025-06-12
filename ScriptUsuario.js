@@ -144,10 +144,10 @@ function getNombreRol(rol) {
 
 function getNombreFiltro(filtro) {
     switch(filtro) {
-        case 'todos': return 'Todos';
-        case 'Administrador': return 'Administradores';
+        case 'todos': return 'todos';
+        case 'Administrador': return 'Administrador';
         case 'Servicio social': return 'Servicio Social';
-        case 'Usuario': return 'Académicos';
+        case 'Usuario': return 'Usuario';
         case 'lab_encargado': return 'Encargados de Laboratorio';
         default: return filtro;
     }
@@ -240,10 +240,10 @@ function cambiarRol() {
     // Recargar la vista actual
     const activeButton = document.querySelector('.btn-group button.active');
     if (activeButton) {
-        const filtro = activeButton.textContent.includes('Todos') ? 'todos' : 
-                    activeButton.textContent.includes('Administradores') ? 'admin' :
-                    activeButton.textContent.includes('Servicio Social') ? 'service_social' : 
-                    activeButton.textContent.includes('Encargados') ? 'lab_encargado' : 'academico';
+        const filtro = activeButton.textContent.includes('todos') ? 'todos' : 
+                    activeButton.textContent.includes('Administrador') ? 'Administrador' :
+                    activeButton.textContent.includes('Servicio Social') ? 'Servicio social' : 
+                    activeButton.textContent.includes('Encargados') ? 'lab_encargado' : 'Usuario';
         filtrarUsuarios(filtro);
     }
 }

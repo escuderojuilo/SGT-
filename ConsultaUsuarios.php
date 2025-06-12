@@ -141,9 +141,9 @@
                     <div class="mb-3">
                         <label for="rol-select" class="form-label">Selecciona un nuevo rol:</label>
                         <select id="rol-select" class="form-select" onchange="toggleLaboratorioField()">
-                            <option value="admin">Administrador</option>
-                            <option value="service_social">Servicio Social</option>
-                            <option value="academico">Académico</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Servicio social">Servicio Social</option>
+                            <option value="Usuario">Académico</option>
                             <option value="lab_encargado">Encargado de Laboratorio</option>
                         </select>
                     </div>
