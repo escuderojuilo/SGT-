@@ -171,7 +171,7 @@
     <!--
     <script>
         // Variables globales para el tipo de usuario
-        const isAdmin = <?php echo $_SESSION['user_type'] === 'admin' ? 'true' : 'false'; ?>;
+        const isAdmin = <?php //echo $_SESSION['user_type'] === 'admin' ? 'true' : 'false'; ?>;
     </script>
     -->
 <script src="ScriptUsuario.js"></script>

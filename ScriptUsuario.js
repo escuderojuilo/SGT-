@@ -8,7 +8,7 @@ let laboratorios = window.laboratorios || [];
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarUsuarios();
+    //cargarUsuarios();
     filtrarUsuarios('todos'); // Mostrar todos los usuarios por defecto
 });
 //Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
@@ -19,12 +19,19 @@ fetch('datosusuario.php')
         console.log("Contenido de data:", datos); // Verificar los datos en la consola
 
         //guardar datos en una variable
-        usuarios = datos.map(user  => ({id: user.ID_USR, nombre: user.NOMBRE, apellido: user.AP_PAT, nombrerol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
+        usuarios = datos.map(user  => ({
+            id: user.ID_USR, 
+            nombre: user.NOMBRE, 
+            apellido: user.AP_PAT, 
+            nombrerol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
 
-        console.log("Serv:", usuarios);
+        console.log("Usuarios:", usuarios);
         // Suponiendo que tienes una función para llenar los datos
-
     })
+     .catch(error => {
+        console.error('Error al cargar usuarios:', error);
+        // Aquí puedes mostrar un mensaje de error en la interfaz si lo deseas
+    });
 
 //function cargarUsuarios() {
 //        fetch('getUsuarios.php')
