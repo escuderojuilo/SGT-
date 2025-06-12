@@ -244,6 +244,8 @@ function mostrarModalFinalizacion(ticketId) {
     const now = new Date();
     document.getElementById('fecha-finalizacion').value = now.toISOString().split('T')[0];
     document.getElementById('hora-finalizacion').value = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+    
+    document.getElementById('descripcion-solucion').value = '';
 
     const modal = new bootstrap.Modal(document.getElementById('finalizarModal'));
     modal.show();
@@ -252,6 +254,7 @@ function mostrarModalFinalizacion(ticketId) {
 function finalizarTicket() {
     const fecha = document.getElementById('fecha-finalizacion').value;
     const hora = document.getElementById('hora-finalizacion').value;
+    const descripcion = document.getElementById('descripcion-solucion').value; // Nuevo campo
 
     //if (!fecha || !hora) {
       //  alert("Por favor complete tanto la fecha como la hora de finalización");
@@ -268,12 +271,21 @@ function finalizarTicket() {
     if (ticketIndex !== -1) {
 
         tickets[ticketIndex].horafin = fechaHoraFinalizacion;
+        tickets[ticketIndex].solucion = descripcion; // Guardar en objeto
+
         bootstrap.Modal.getInstance(document.getElementById('finalizarModal')).hide();
-        actualizarEstadoTicket(ticketActual, "3", () => {filtrarTickets('3');}, fechaHoraFinalizacion);
+
+        // Pasar descripción a la función
+        actualizarEstadoTicket(
+            ticketActual, 
+            "3", 
+            () => { filtrarTickets('3'); }, 
+            fechaHoraFinalizacion,
+            descripcion // Nuevo parámetro
+        );
     }
 
 }
-
 
 
 
