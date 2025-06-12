@@ -23,7 +23,7 @@ fetch('datosusuario.php')
             id: user.ID_USR, 
             nombre: user.NOMBRE, 
             apellido: user.AP_PAT, 
-            nombrerol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
+            rol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
 
         console.log("Usuarios:", usuarios);
         // Suponiendo que tienes una función para llenar los datos
@@ -83,7 +83,7 @@ function filtrarUsuarios(filtro) {
     if (filtro === 'todos') {
         usuariosFiltrados = [...usuarios];
     } else {
-        usuariosFiltrados = usuarios.filter(usuario => usuario.NOM_ROL === filtro);
+        usuariosFiltrados = usuarios.filter(usuario => usuario.rol === filtro);
     }
 
     const tbody = document.getElementById('usuarios-body');
@@ -134,9 +134,9 @@ function filtrarUsuarios(filtro) {
 
 function getNombreRol(rol) {
     switch(rol) {
-        case 'admin': return 'Administrador';
-        case 'service_social': return 'Servicio Social';
-        case 'academico': return 'Académico';
+        case 'Administrador': return 'Administrador';
+        case 'Servicio social': return 'Servicio Social';
+        case 'Usuario': return 'Usuario';
         case 'lab_encargado': return 'Encargado de Laboratorio';
         default: return rol;
     }
@@ -145,9 +145,9 @@ function getNombreRol(rol) {
 function getNombreFiltro(filtro) {
     switch(filtro) {
         case 'todos': return 'Todos';
-        case 'admin': return 'Administradores';
-        case 'service_social': return 'Servicio Social';
-        case 'academico': return 'Académicos';
+        case 'Administrador': return 'Administradores';
+        case 'Servicio social': return 'Servicio Social';
+        case 'Usuario': return 'Académicos';
         case 'lab_encargado': return 'Encargados de Laboratorio';
         default: return filtro;
     }
