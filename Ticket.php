@@ -123,6 +123,7 @@
                                         <th width="15%">Cubículo</th>
                                         <th width="15%">Horario de atención</th>
                                         <th width="30%">Problema</th>
+                                        <th width="15%">Asignado a</th>
                                         <th width="20%">Acciones</th>
                                     </tr>
                                 </thead>

@@ -135,6 +135,7 @@ function filtrarTickets(estado) {
                     </button>
                 </div>
             `;
+            asignadoA = ticket.NOMBRE || 'No asignado';
         } else if (estado === '3') {
             acciones = `
                 <div class="text-center">
@@ -142,6 +143,7 @@ function filtrarTickets(estado) {
                     <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
                 </div>
             `;
+            asignadoA = ticket.NOMBRE || 'No asignado';
         }
 
         tr.innerHTML = `
@@ -212,10 +214,9 @@ function asignarServicioSocial() {
     const servicioSeleccionado = serviciosSociales.find(s => s.id === servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
 
-    const ticketIndex = tickets.findIndex(t => t.id === ticketActual);
+    const ticketIndex = tickets.findIndex(t => t.ID === ticketActual);
     if (ticketIndex !== -1) {
-        tickets[ticketIndex].estado = "2";
-        tickets[ticketIndex].servicioSocial = nombreServicio;
+        tickets[ticketIndex].NOMBRE = nombreServicio;
     }
 
     tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion, tipoHoja);
