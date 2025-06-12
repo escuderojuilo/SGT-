@@ -118,7 +118,7 @@ function filtrarTickets(estado) {
             <td>${ticket.cubiculo}</td>
             <td>${ticket.hora}</td>
             <td>${ticket.problema}</td>
-            <td>${estado === '1' ? 'Pendiente de asignación' : (ticket.NOMBRE || 'No asignado')}</td>
+            <td>${estado === '1' ? 'Pendiente de asignación' : (ticket.asignado || 'No asignado')}</td>
             <td class="acciones">
                 ${estado === '1' ? `
                     <div class="btn-group">
@@ -229,7 +229,7 @@ function asignarServicioSocial() {
                     estado: ticket.DESC_STATUS_TKT, 
                     idestado: ticket.ID_STATUS_TKT, 
                     horafin: ticket.FECHA_FIN,
-                    NOMBRE: ticket.NOMBRE_ASIGNADO // Asegurar que tenemos este campo
+                    asignado: ticket.NOMBRE_ASIGNADO || null  // Asegurar que tenemos este campo
                 }));
                 filtrarTickets('2');
             })
