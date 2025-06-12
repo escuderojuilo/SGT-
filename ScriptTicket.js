@@ -48,7 +48,7 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
         }
     })
     .catch(error => {
-      console.error('Error en la solicitud:', error);
+    console.error('Error en la solicitud:', error);
         alert(`Ocurrió un error al intentar actualizar el estado del ticket ${ticketId}. ${nuevoEstado}`);
     });
 }
@@ -104,62 +104,45 @@ function filtrarTickets(estado) {
             button.classList.remove('active');
         }
     });
-    const asignadoHeader = document.getElementById('asignado-header');
-    if (estado === '2' || estado === '3') {
-        asignadoHeader.style.display = 'table-cell';
-    } else {
-        asignadoHeader.style.display = 'none';
-    }
 
-    // Actualizar la variable global con el servicio seleccionado
     const ticketsFiltrados = tickets.filter(ticket => ticket.idestado === estado);
-
     const tbody = document.getElementById('tickets-body');
     tbody.innerHTML = '';
 
     ticketsFiltrados.forEach(ticket => {
         const tr = document.createElement('tr');
 
-        let acciones = '';
-        let asignadoCell = '';
-        if (estado === '1') {
-            acciones = `
-                <div class="btn-group">
-                    <button class="btn btn-success btn-sm" onclick="mostrarModalAsignacion(${ticket.ID})">
-                        <i class="material-icons">check</i> Aceptar
-                    </button>
-                    <button class="btn btn-danger btn-sm" onclick="rechazarTicket(${ticket.ID})">
-                        <i class="material-icons">close</i> Rechazar
-                    </button>
-                </div>
-            `;
-        } else if (estado === '2') {
-            acciones = `
-                <div>
-                    <small class="d-block">Asignado a: ${ticket.NOMBRE}</small>
-                    <button class="btn btn-primary btn-sm mt-1" onclick="mostrarModalFinalizacion(${ticket.ID})">
-                        <i class="material-icons">done_all</i> Finalizar
-                    </button>
-                </div>
-            `;
-            asignadoCell = `<td>${ticket.NOMBRE || 'No asignado'}</td>`;
-        } else if (estado === '3') {
-            acciones = `
-                <div class="text-center">
-                    <small class="d-block">Completado por: ${ticket.NORMAL}</small>
-                    <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
-                </div>
-            `;
-            asignadoCell = `<td>${ticket.NOMBRE || 'No asignado'}</td>`;
-        }
-
+        // Siempre mostrar todas las columnas
         tr.innerHTML = `
             <td>${ticket.solicitante}</td>
             <td>${ticket.cubiculo}</td>
             <td>${ticket.hora}</td>
             <td>${ticket.problema}</td>
-            ${asignadoCell} <!-- Celda de asignado solo para estados 2 y 3 -->
-            <td class="acciones">${acciones}</td>
+            <td>${estado === '1' ? 'Pendiente de asignación' : (ticket.NOMBRE || 'No asignado')}</td>
+            <td class="acciones">
+                ${estado === '1' ? `
+                    <div class="btn-group">
+                        <button class="btn btn-success btn-sm" onclick="mostrarModalAsignacion(${ticket.ID})">
+                            <i class="material-icons">check</i> Aceptar
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="rechazarTicket(${ticket.ID})">
+                            <i class="material-icons">close</i> Rechazar
+                        </button>
+                    </div>
+                ` : ''}
+                ${estado === '2' ? `
+                    <div>
+                        <button class="btn btn-primary btn-sm mt-1" onclick="mostrarModalFinalizacion(${ticket.ID})">
+                            <i class="material-icons">done_all</i> Finalizar
+                        </button>
+                    </div>
+                ` : ''}
+                ${estado === '3' ? `
+                    <div class="text-center">
+                        <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
+                    </div>
+                ` : ''}
+            </td>
         `;
 
         tbody.appendChild(tr);
@@ -217,28 +200,48 @@ function asignarServicioSocial() {
 
     const now = new Date();
     const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
-     ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+    ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
     const servicioSeleccionado = serviciosSociales.find(s => s.id === servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
 
-    const ticketIndex = tickets.findIndex(t => t.ID === ticketActual);
+    const ticketIndex = tickets.findIndex(t => t.ID == ticketActual);
     if (ticketIndex !== -1) {
         tickets[ticketIndex].NOMBRE = nombreServicio;
+        console.log(`Ticket ${ticketActual} actualizado con asignado: ${nombreServicio}`);
     }
 
     tasignaciones(ticketActual, servicioId, fechaHoraFinalizacion, tipoHoja);
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
-    actualizarEstadoTicket(ticketActual, "2", () => {filtrarTickets('2');}, fechaHoraFinalizacion);
+    actualizarEstadoTicket(ticketActual, "2", () => {
+        // Forzar recarga de datos desde el servidor
+        fetch('datostkt.php')
+            .then(response => response.json())
+            .then(data => {
+                tickets = data.map(ticket  => ({
+                    ID: ticket.ID_TKT, 
+                    solicitante: ticket.NOMBRE, 
+                    cubiculo: ticket.CUBICULO, 
+                    hora: ticket.FECHA_INI, 
+                    problema: ticket.MOTIVO, 
+                    estado: ticket.DESC_STATUS_TKT, 
+                    idestado: ticket.ID_STATUS_TKT, 
+                    horafin: ticket.FECHA_FIN,
+                    NOMBRE: ticket.NOMBRE_ASIGNADO // Asegurar que tenemos este campo
+                }));
+                filtrarTickets('2');
+            })
+            .catch(error => console.error("Error al obtener tickets:", error));
+    }, fechaHoraAsignacion);
 }
 
 function rechazarTicket(ticketId) {
 
     const now = new Date();
     const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
-     ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;    
+    ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;    
     if (confirm("¿Está seguro que desea rechazar este ticket?")) {
         actualizarEstadoTicket(ticketId, "4", () => {
             tickets = tickets.filter(ticket => ticket.id !== ticketId);
