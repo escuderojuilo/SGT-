@@ -155,6 +155,10 @@
                         <label for="hora-finalizacion" class="form-label">Hora de finalización:</label>
                         <input type="time" id="hora-finalizacion" class="form-control" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="descripcion-solucion" class="form-label">Descripción de la solución:</label>
+                        <textarea class="form-control" id="descripcion-solucion" rows="3" required></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
