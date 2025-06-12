@@ -456,8 +456,9 @@ function cambio_contra(){
 
      require "includes/database.php";
 
-    if (isset($_GET['mai'])) {
-        $correo = $_GET['mai'];
+    if (isset($_GET['EMAIL'])) {
+        $correo = $_GET['EMAIL'];
+        echo $correo;
 
         // Verificar si el token existe en la base de datos
         $stmt = $db->prepare("SELECT ID_USR FROM usuario WHERE EMAIL=? LIMIT 1");
@@ -466,28 +467,38 @@ function cambio_contra(){
         $stmt->store_result();
         
         if ($stmt-> num_rows > 0) {
-
-             if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-            $contra = mysqli_real_escape_string($db, $_POST['newPassword']);   
-
             $stmt->close();
-            $stmt = $db->prepare("UPDATE usuario SET PASS=? WHERE EMAIL=?");
-            $stmt->bind_param("ss", $contra, $correo);
-            $stmt->execute();
-                    
-            }
+            
+
+            if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $contra = $_POST['confirmPassword']; 
+            $hash = password_hash($contra, PASSWORD_BCRYPT);  
+
+            $stmt2 = $db->prepare("UPDATE usuario SET PASS=? WHERE EMAIL=?");
+            $stmt2->bind_param("ss", $hash, $correo);
+
+             if ($stmt2->execute()) {
+                    header('Location: /SGT-Boostrap/contrasena-cambiada-exito.php');
+                } else {
+                    echo "Error al actualizar la contraseña.";
+                }
+                 $stmt2->close();   
+                }
+        
         } else {
 
             echo "contraseña mala :C.";
         }
 
-        $stmt->close();
+       
         $db->close();
 
     }
 
 }
+
+
 
 
 ?>

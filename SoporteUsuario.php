@@ -10,8 +10,6 @@ $auth = $_SESSION['login'] ?? false;
 
 dispotkt();
 
-var_dump($_SESSION);
-
 ?>
 
 
@@ -44,7 +42,7 @@ var_dump($_SESSION);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="includes/cerrarsesion.php">Cerrar Sesion</a>
+                        <a class="nav-link" href="/SGT-Boostrap/includes/cerrarsesion.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>

@@ -32,7 +32,7 @@ cambio_contra();
         <div class="password-container">
             <h3 class="form-title"><i class="fas fa-key me-2"></i>Establecer Nueva Contraseña</h3>
             
-            <form id="passwordForm" action="contrasena-cambiada-exito.php" method="POST">
+            <form id="passwordForm" method="POST">
                 <div class="mb-3">
                     <label for="newPassword" class="form-label">Nueva Contraseña</label>
                     <input type="password" class="form-control" id="newPassword" name="newPassword" required 
@@ -46,7 +46,7 @@ cambio_contra();
                 </div>
                 
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary"  >
                         <i class="fas fa-save me-2"></i>Guardar Cambios
                     </button>
                 </div>
