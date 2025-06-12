@@ -104,6 +104,12 @@ function filtrarTickets(estado) {
             button.classList.remove('active');
         }
     });
+    const asignadoHeader = document.getElementById('asignado-header');
+    if (estado === '2' || estado === '3') {
+        asignadoHeader.style.display = 'table-cell';
+    } else {
+        asignadoHeader.style.display = 'none';
+    }
 
     // Actualizar la variable global con el servicio seleccionado
     const ticketsFiltrados = tickets.filter(ticket => ticket.idestado === estado);
@@ -115,6 +121,7 @@ function filtrarTickets(estado) {
         const tr = document.createElement('tr');
 
         let acciones = '';
+        let asignadoCell = '';
         if (estado === '1') {
             acciones = `
                 <div class="btn-group">
@@ -135,7 +142,7 @@ function filtrarTickets(estado) {
                     </button>
                 </div>
             `;
-            asignadoA = ticket.NOMBRE || 'No asignado';
+            asignadoCell = `<td>${ticket.NOMBRE || 'No asignado'}</td>`;
         } else if (estado === '3') {
             acciones = `
                 <div class="text-center">
@@ -143,7 +150,7 @@ function filtrarTickets(estado) {
                     <small>Finalizado: ${ticket.horafin || 'No especificado'}</small>
                 </div>
             `;
-            asignadoA = ticket.NOMBRE || 'No asignado';
+            asignadoCell = `<td>${ticket.NOMBRE || 'No asignado'}</td>`;
         }
 
         tr.innerHTML = `
@@ -151,6 +158,7 @@ function filtrarTickets(estado) {
             <td>${ticket.cubiculo}</td>
             <td>${ticket.hora}</td>
             <td>${ticket.problema}</td>
+            ${asignadoCell} <!-- Celda de asignado solo para estados 2 y 3 -->
             <td class="acciones">${acciones}</td>
         `;
 
