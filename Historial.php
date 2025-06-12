@@ -91,6 +91,7 @@
                             <th>Cubiculo</th>
                             <th>Horario</th>
                             <th>Problema</th>
+                            <th>Solución</th>
                             <th>Fecha Inicio</th>
                             <th>Fecha Término</th>
                         </tr>
