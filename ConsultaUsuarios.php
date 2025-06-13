@@ -91,13 +91,13 @@
                                 <button type="button" class="btn btn-primary" onclick="filtrarUsuarios('todos')">
                                     <i class="material-icons">people</i> Todos
                                 </button>
-                                <button type="button" class="btn btn-danger" onclick="filtrarUsuarios('admin')">
+                                <button type="button" class="btn btn-danger" onclick="filtrarUsuarios('Administrador')">
                                     <i class="material-icons">security</i> Administradores
                                 </button>
-                                <button type="button" class="btn btn-warning" onclick="filtrarUsuarios('service_social')">
+                                <button type="button" class="btn btn-warning" onclick="filtrarUsuarios('Servicio social')">
                                     <i class="material-icons">school</i> Servicio Social
                                 </button>
-                                <button type="button" class="btn btn-success" onclick="filtrarUsuarios('academico')">
+                                <button type="button" class="btn btn-success" onclick="filtrarUsuarios('Usuario')">
                                     <i class="material-icons">person</i> Académicos
                                 </button>
                                 <button type="button" class="btn btn-info" onclick="filtrarUsuarios('lab_encargado')">

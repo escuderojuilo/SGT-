@@ -191,23 +191,23 @@ function cargarLaboratorios() {
         });
 }
 
-function mostrarModalCambioRol(usuarioId, usuarioNombre) {
-    if (!isAdmin) return;
+function mostrarModalCambioRol(id, nombre) {
     
-    const usuario = usuarios.find(u => u.id === usuarioId);
-    if (!usuario) return;
+    document.getElementById('usuario-id').value = id;
+    document.getElementById('usuario-nombre').textContent = nombre;
 
-    document.getElementById('usuario-id').value = usuarioId;
-    document.getElementById('usuario-nombre').textContent = usuarioNombre;
+    const usuario = usuarios.find(u => u.id === id);
+    if (usuario) {
+
     document.getElementById('rol-select').value = usuario.rol;
     
     // Si ya tiene laboratorio asignado, seleccionarlo
     if (usuario.rol === 'lab_encargado' && usuario.laboratorio_id) {
         document.getElementById('laboratorio-select').value = usuario.laboratorio_id;
     }
-    
+    }
     toggleLaboratorioField();
-    
+
     const modal = new bootstrap.Modal(document.getElementById('cambiarRolModal'));
     modal.show();
 }
