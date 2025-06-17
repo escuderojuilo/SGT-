@@ -110,9 +110,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th width="40%">Nombre</th>
-                                        <th width="40%">Rol</th>
-                                        <th width="20%">Acciones</th>
+                                        <th width="25%">Nombre</th> 
+                                        <th width="20%">Rol</th>
+                                        <th width="15%" class="text-center">Estado</th>
+                                        <th width="20%">Cambiar Rol</th>
                                     </tr>
                                 </thead>
                                 <tbody id="usuarios-body">
