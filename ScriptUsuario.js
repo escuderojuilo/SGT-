@@ -6,7 +6,6 @@ let usuarioActual = null;
 let laboratorios = window.laboratorios || [];
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     fetch('datosusuario.php')
     .then(response => response.json())
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filtrarUsuarios('Administrador');
     })
-     .catch(error => {
+    .catch(error => {
         console.error('Error al cargar usuarios:', error);
         // Aquí puedes mostrar un mensaje de error en la interfaz si lo deseas
     });
@@ -73,14 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Función para filtrar usuarios (actualizada para mostrar laboratorio)
 function filtrarUsuarios(filtro) {
-    const buttons = document.querySelectorAll('.btn-group button');
-    buttons.forEach(button => {
-        button.classList.remove('active');
-        if (button.textContent.includes(getNombreFiltro(filtro))) {
-            button.classList.add('active');
-        }
-    });
-
     let usuariosFiltrados = [];
     if (filtro === 'todos') {
         usuariosFiltrados = [...usuarios];
@@ -94,7 +85,7 @@ function filtrarUsuarios(filtro) {
     if (usuariosFiltrados.length === 0) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td colspan="3" class="text-center py-4">
+            <td colspan="4" class="text-center py-4">
                 <i class="material-icons">info</i>
                 No hay usuarios ${getNombreFiltro(filtro).toLowerCase()}
             </td>
@@ -106,18 +97,24 @@ function filtrarUsuarios(filtro) {
     usuariosFiltrados.forEach(usuario => {
         const tr = document.createElement('tr');
         let acciones = '';
-        
+        let estadoCheck = '';
+
         if (isAdmin) {
+            estadoCheck = `
+                <input type="checkbox"
+                    ${usuario.activo ? 'checked' : ''}
+                    onchange="cambiarEstadoUsuario(${usuario.id}, this.checked)">
+            `;
             acciones = `
                 <button class="btn btn-primary btn-sm" onclick="mostrarModalCambioRol(${usuario.id}, '${usuario.nombre}')">
                     <i class="material-icons">edit</i> Cambiar Rol
                 </button>
             `;
         } else {
+            estadoCheck = `<span class="badge ${usuario.activo ? 'bg-success' : 'bg-secondary'}">${usuario.activo ? 'Activo' : 'Inactivo'}</span>`;
             acciones = `<small>No disponible</small>`;
         }
 
-        // Obtener nombre del laboratorio si es encargado
         const laboratorioNombre = usuario.rol === 'lab_encargado' && usuario.laboratorio_id ?
             laboratorios.find(l => l.id === usuario.laboratorio_id)?.nombre : null;
 
@@ -127,10 +124,30 @@ function filtrarUsuarios(filtro) {
                 ${getNombreRol(usuario.rol)}
                 ${laboratorioNombre ? `<br><small class="text-muted">Lab: ${laboratorioNombre}</small>` : ''}
             </td>
+            <td class="text-center">${estadoCheck}</td>
             <td class="acciones">${acciones}</td>
         `;
         tbody.appendChild(tr);
     });
+}
+
+function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
+    const usuario = usuarios.find(u => u.id === usuarioId);
+    if (!usuario) return;
+
+    // Si es admin y se intenta desactivar, verifica si es el único admin activo
+    if (usuario.rol === 'admin' && usuario.activo && !nuevoEstado) {
+        const adminsActivos = usuarios.filter(u => u.rol === 'admin' && u.activo);
+        if (adminsActivos.length === 1) {
+            alert('Debe haber al menos un administrador activo.');
+            // Revertir el cambio visualmente
+            filtrarUsuarios(getFiltroActual());
+            return;
+        }
+    }
+
+    usuario.activo = nuevoEstado;
+    filtrarUsuarios(getFiltroActual());
 }
 
 
