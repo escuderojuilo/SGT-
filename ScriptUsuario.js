@@ -8,11 +8,7 @@ let laboratorios = window.laboratorios || [];
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    //cargarUsuarios();
-    filtrarUsuarios('todos'); // Mostrar todos los usuarios por defecto
-});
-//Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
-fetch('datosusuario.php')
+    fetch('datosusuario.php')
     .then(response => response.json())
     .then(datos => {
         console.log(datos);
@@ -27,11 +23,17 @@ fetch('datosusuario.php')
 
         console.log("Usuarios:", usuarios);
         // Suponiendo que tienes una función para llenar los datos
+
+        filtrarUsuarios('Administrador');
     })
      .catch(error => {
         console.error('Error al cargar usuarios:', error);
         // Aquí puedes mostrar un mensaje de error en la interfaz si lo deseas
     });
+    //cargarUsuarios();
+});
+//Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
+
 
 //function cargarUsuarios() {
 //        fetch('getUsuarios.php')
