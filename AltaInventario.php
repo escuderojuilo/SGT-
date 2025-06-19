@@ -28,10 +28,10 @@
 </head>
 <body>
     <!-- Header -->
-    <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
+    <div class="container-fluid g-0 mb-3">
         <div class="row">
-            <div class="col-12 p-0"> <!-- columna sin padding (p-0) -->
-                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100"> <!-- w-100 = width 100% -->
+            <div class="col-12 p-0">
+                <img src="/SGT-Boostrap/imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
@@ -51,6 +51,7 @@
                             <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/altaUsuario.php">Alta Usuario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoftware.php">Alta Software</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -60,6 +61,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaSoftware.php">Software</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -108,7 +110,7 @@
             </div>
 
             <!-- Computadora Questions -->
-            <div id="pregunta-computadora" class="pregunta-adicional row g-3">
+            <div id="pregunta-computadora" class="pregunta-adicional row g-3" style="display: none;">
                 <div class="col-md-6">
                     <label for="tipo-computadora" class="form-label">Tipo de computadora:</label>
                     <select class="form-select" id="tipo-computadora" name="tipo-computadora">
@@ -147,26 +149,45 @@
                     <label for="almacenamiento" class="form-label">Almacenamiento:</label>
                     <input type="text" class="form-control" id="almacenamiento" name="almacenamiento">
                 </div>
+
+                <div class="col-md-6">
+                    <label for="laboratorio" class="form-label">¿Es de un Laboratorio?:</label>
+                    <select class="form-select" id="laboratorio" name="laboratorio" onchange="mostrarLaboratorio()">
+                        <option value="No">No</option>
+                        <option value="Si">Sí</option>
+                    </select>
+                </div>
+
+                <div id="laboratorio-container" class="col-md-6" style="display: none;">
+                    <label for="nombre-laboratorio" class="form-label">Nombre del Laboratorio:</label>
+                    <select class="form-select" id="sallab" name="sallab ">
+                        <option value="R-001">R-001</option>
+                        <option value="R-005">R-005</option>
+                        <option value="R-030">R-030</option>
+                        <option value="R-031">R-031</option>
+                        <option value="R-032">R-032</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Impresora Questions -->
-            <div id="pregunta-impresora" class="pregunta-adicional">
+            <div id="pregunta-impresora" class="pregunta-adicional" style="display: none;">
                 <div class="col-md-6">
                     <label for="tipo-impresora" class="form-label">Tipo de Impresora</label>
                     <select class="form-select" id="tipo-impresora" name="tipo-impresora">
-                        <option value="Inyeccion">Inyeccion</option>
+                        <option value="Inyeccion">Inyección</option>
                         <option value="Tinta">Tinta</option>
-                        <option value="Laser">Laser</option>
+                        <option value="Laser">Láser</option>
                         <option value="Tanque de Tinta">Tanque de Tinta</option>
-                        <option value="Scaner">Scaner</option>
+                        <option value="Scaner">Escáner</option>
                     </select>
                 </div>
             </div>
 
             <!-- Otro Questions -->
-            <div id="pregunta-otro" class="pregunta-adicional">
+            <div id="pregunta-otro" class="pregunta-adicional" style="display: none;">
                 <div class="col-md-12">
-                    <label for="descripcion-otro" class="form-label">Descripcion:</label>
+                    <label for="descripcion-otro" class="form-label">Descripción:</label>
                     <input type="text" class="form-control" id="descripcion-otro" name="descripcion-otro">
                 </div>
             </div>
@@ -193,22 +214,22 @@
             </div>
             
             <div class="col-md-6">
-                <label for="ip-alambrica" class="form-label">IP Alambrica:</label>
+                <label for="ip-alambrica" class="form-label">IP Alámbrica:</label>
                 <input type="text" class="form-control" id="ip-alambrica" name="ip-alambrica">
             </div>
             
             <div class="col-md-6">
-                <label for="ip_inalambrica" class="form-label">IP Inalambrica:</label>
+                <label for="ip_inalambrica" class="form-label">IP Inalámbrica:</label>
                 <input type="text" class="form-control" id="ip_inalambrica" name="ip_inalambrica">
             </div>
             
             <div class="col-md-6">
-                <label for="mac_alambrica" class="form-label">MAC Alambrica:</label>
+                <label for="mac_alambrica" class="form-label">MAC Alámbrica:</label>
                 <input type="text" class="form-control" id="mac_alambrica" name="mac_alambrica">
             </div>
             
             <div class="col-md-6">
-                <label for="mac_inalambrica" class="form-label">MAC inalambrica:</label>
+                <label for="mac_inalambrica" class="form-label">MAC inalámbrica:</label>
                 <input type="text" class="form-control" id="mac_inalambrica" name="mac_inalambrica">
             </div>
             
@@ -232,6 +253,18 @@
             var opcion = document.getElementById('opcion').value;
             if (opcion) {
                 document.getElementById('pregunta-' + opcion).style.display = 'block';
+            }
+        }
+
+        function mostrarLaboratorio() {
+            var laboratorioSelect = document.getElementById('laboratorio');
+            var laboratorioContainer = document.getElementById('laboratorio-container');
+            
+            if (laboratorioSelect.value === 'Si') {
+                laboratorioContainer.style.display = 'block';
+            } else {
+                laboratorioContainer.style.display = 'none';
+                document.getElementById('nombre-laboratorio').value = ''; // Limpiar el campo si se cambia a "No"
             }
         }
     </script>
