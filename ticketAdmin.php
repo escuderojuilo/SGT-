@@ -19,7 +19,8 @@
             </div>
         </div>
         
-    <nav class="navbar navbar-expand-lg custom-navbar mb-4">
+    <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg custom-navbar mb-4">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -34,6 +35,7 @@
                             <li><a class="dropdown-item" href="/SGT-Boostrap/AltaInventario.php">Alta Inventario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/altaUsuario.php">Alta Usuario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoportes.php">Alta Soportes</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/AltaSoftware.php">Alta Software</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -43,6 +45,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaUsuarios.php">Usuario</a></li>
                             <li><a class="dropdown-item" href="/SGT-Boostrap/Consultas.php">Equipos</a></li>
+                            <li><a class="dropdown-item" href="/SGT-Boostrap/ConsultaSoftware.php">Software</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -76,7 +79,7 @@
             </div>
         </nav>
     </div>
-
+            
     <main class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
