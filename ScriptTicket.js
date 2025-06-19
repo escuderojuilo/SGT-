@@ -12,9 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Contenido de data:", data); // Verificar los datos en la consola
 
         //guardar datos en una variable
-        tickets = data.map(ticket  => ({ID: ticket.ID_TKT, solicitante: ticket.NOMBRE, cubiculo: ticket.CUBICULO, 
-        hora: ticket.FECHA_INI, problema: ticket.MOTIVO, estado: ticket.DESC_STATUS_TKT, 
-        idestado: ticket.ID_STATUS_TKT, horafin: ticket.FECHA_FIN})); // Inicializar la variable tickets como un arreglo
+        tickets = data.map(ticket  => ({ID: ticket.ID_TKT, 
+        solicitante: ticket.NOMBRE, 
+        cubiculo: ticket.CUBICULO, 
+        hora: ticket.FECHA_INI, 
+        problema: ticket.MOTIVO, 
+        estado: ticket.DESC_STATUS_TKT, 
+        idestado: ticket.ID_STATUS_TKT, 
+        horafin: ticket.FECHA_FIN, 
+        solucion: ticket.SOLUCION,
+        servicio: ticket.NOMBRE_ASIGNADO })); // Inicializar la variable tickets como un arreglo
 
         //console.log("Tickets:", tickets)
     
@@ -23,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error("Error al obtener tickets:", error));
 });
 
-function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
+function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin, solucion) {
 
     fetch('cambiar_estado.php', {
         method: 'POST',
@@ -33,7 +40,8 @@ function actualizarEstadoTicket(ticketId, nuevoEstado, callback, fechafin) {
         body: JSON.stringify({
             id: ticketId,
             estado: nuevoEstado,
-            fechaHorafin: fechafin // Enviar fecha de finalización si se proporciona
+            fechaHorafin: fechafin,
+            sol: solucion // Enviar fecha de finalización si se proporciona
         })
     })
     .then(response => response.json())
@@ -117,8 +125,8 @@ function filtrarTickets(estado) {
             <td>${ticket.solicitante}</td>
             <td>${ticket.cubiculo}</td>
             <td>${ticket.hora}</td>
-            <td>${ticket.problema}</td>
-            <td>${estado === '1' ? 'Pendiente de asignación' : (ticket.asignado || 'No asignado')}</td>
+            <td>${estado === '3' ? (ticket.solucion) : ticket.problema}</td>
+            <td>${estado === '1' ? 'Pendiente de asignación' : (ticket.servicio || 'No asignado')}</td>
             <td class="acciones">
                 ${estado === '1' ? `
                     <div class="btn-group">
@@ -202,12 +210,14 @@ function asignarServicioSocial() {
     const fechaHoraFinalizacion = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}
     ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
-    const servicioSeleccionado = serviciosSociales.find(s => s.id === servicioId);
+    const servicioSeleccionado = serviciosSociales.find(s => s.id == servicioId);
     const nombreServicio = servicioSeleccionado ? servicioSeleccionado.nombre : '';
+    console.log(`Ticket ${ticketActual} actualizado con asignado: ${nombreServicio}`);
+
 
     const ticketIndex = tickets.findIndex(t => t.ID == ticketActual);
     if (ticketIndex !== -1) {
-        tickets[ticketIndex].asignado = nombreServicio;
+        tickets[ticketIndex].servicio = nombreServicio;
         console.log(`Ticket ${ticketActual} actualizado con asignado: ${nombreServicio}`);
     }
 
@@ -215,26 +225,7 @@ function asignarServicioSocial() {
 
     bootstrap.Modal.getInstance(document.getElementById('asignarModal')).hide();
     
-    actualizarEstadoTicket(ticketActual, "2", () => {
-        // Forzar recarga de datos desde el servidor
-        fetch('datostkt.php')
-            .then(response => response.json())
-            .then(data => {
-                tickets = data.map(ticket  => ({
-                    ID: ticket.ID_TKT, 
-                    solicitante: ticket.NOMBRE, 
-                    cubiculo: ticket.CUBICULO, 
-                    hora: ticket.FECHA_INI, 
-                    problema: ticket.MOTIVO, 
-                    estado: ticket.DESC_STATUS_TKT, 
-                    idestado: ticket.ID_STATUS_TKT, 
-                    horafin: ticket.FECHA_FIN,
-                    asignado: ticket.NOMBRE_ASIGNADO || null  // Asegurar que tenemos este campo
-                }));
-                filtrarTickets('2');
-            })
-            .catch(error => console.error("Error al obtener tickets:", error));
-    }, fechaHoraAsignacion);
+    actualizarEstadoTicket(ticketActual, "2", () => {filtrarTickets('2');}, fechaHoraFinalizacion, ' ');
 }
 
 function rechazarTicket(ticketId) {
@@ -246,7 +237,7 @@ function rechazarTicket(ticketId) {
         actualizarEstadoTicket(ticketId, "4", () => {
             tickets = tickets.filter(ticket => ticket.id !== ticketId);
             filtrarTickets('4');
-        }, fechaHoraFinalizacion);
+        }, fechaHoraFinalizacion, ' ');
 }}
 
 function mostrarModalFinalizacion(ticketId) {
