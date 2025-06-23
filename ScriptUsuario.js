@@ -31,6 +31,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     //cargarUsuarios();
 });
+
+function camrol(usuarioId, nuevoRol) {
+
+    fetch('datosusuario.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            accion: 'cambiar_rol',
+            id: usuarioId,
+            nuevoRol: nuevoRol
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Rol actualizado correctamente');
+            // Recargar usuarios o actualizar la vista aquí
+        } else {
+            alert('Error: ' + data.message);
+        }
+    });
+}
+
 //Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
 
 
@@ -255,6 +278,8 @@ function cambiarRol() {
 
     // Cerrar el modal
     bootstrap.Modal.getInstance(document.getElementById('cambiarRolModal')).hide();
+
+    camrol(usuarioId, nuevoRol);
     
     // Recargar la vista actual
     const activeButton = document.querySelector('.btn-group button.active');

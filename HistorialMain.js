@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Inicializar DataTable
+    window.initHistorialDataTable = function() {
     $('#datatable_tickets').DataTable({
         data: tickets,
         columns: [
@@ -75,4 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+};
 });
+

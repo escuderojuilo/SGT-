@@ -18,10 +18,11 @@ function servicio(){
         $pass = $_POST['pass'] ?? '';
         $stat = "Activo";
         $cubic = $_POST['cub'] ?? NULL;
+        $cubic2 = $_POST['cub2'] ?? NULL;
         $rol = "3";
         $depa = $_POST['depa'] ?? NULL;
         $confi = "0";
-
+        $cubiculo = $cubic ."-". $cubic2;
 
         $passwordHash = password_hash($pass, PASSWORD_BCRYPT) ;
         
@@ -40,7 +41,7 @@ function servicio(){
              $stmt = $db->prepare("INSERT INTO USUARIO (NOMBRE, 
              AP_PAT, AP_MAT, N_TRABAJADOR, TELEFONO, EMAIL, PASS, 
              STATUS_USR, CUBICULO, ID_ROL, ID_DEPTO, TOKEN, confirmado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-             $stmt->bind_param('sssiissssiisi', $nombre, $pat, $mat, $numero, $tel, $mai, $passwordHash, $stat, $cubic, $rol, $depa, $tok, $confi);
+             $stmt->bind_param('sssiissssiisi', $nombre, $pat, $mat, $numero, $tel, $mai, $passwordHash, $stat, $cubiculo, $rol, $depa, $tok, $confi);
  
              if ($stmt ->execute()) {
                 envmail($nombre, $mai,$tok);

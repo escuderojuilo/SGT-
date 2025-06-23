@@ -88,7 +88,7 @@
                                                 <option value="T">T</option>
                                                 <option value="V">V</option>
                                             </select>
-                                        <input type="text" class="form-control" placeholder="Cubículo" aria-label="Número de cubículo">
+                                        <input type="text" class="form-control" id="cub2" name="cub2" placeholder="Cubículo" aria-label="Número de cubículo">
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">Teléfono:</label>

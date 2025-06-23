@@ -62,7 +62,7 @@ function envmail($nombre, $mai, $tok){
 <body>
     <div class="container">
         <div class="header">
-            <h1>¡Bienvenid@ al Sistema de gestion de tickets!</h1>
+            <h1>¡Bienvenid@ al Sistema de gestión de tickets!</h1>
         </div>
         <div class="content">
             <h2>Hola, ' . htmlspecialchars($nombre) . ' 👋</h2>
