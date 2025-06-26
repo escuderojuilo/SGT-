@@ -159,8 +159,8 @@ function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
     if (!usuario) return;
 
     // Si es admin y se intenta desactivar, verifica si es el único admin activo
-    if (usuario.rol === 'admin' && usuario.activo && !nuevoEstado) {
-        const adminsActivos = usuarios.filter(u => u.rol === 'admin' && u.activo);
+    if (usuario.rol === 'Administrador' && usuario.activo && !nuevoEstado) {
+        const adminsActivos = usuarios.filter(u => u.rol === 'Administrador' && u.activo);
         if (adminsActivos.length === 1) {
             alert('Debe haber al menos un administrador activo.');
             // Revertir el cambio visualmente

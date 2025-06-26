@@ -26,6 +26,7 @@ require "includes/database.php";
             // Actualizar el usuario con el nuevo rol
             $stmt2 = $db->prepare("UPDATE usuario SET ID_ROL = ? WHERE ID_USR = ?");
             $stmt2->bind_param('ii', $idRol, $usuarioId);
+
             if ($stmt2->execute()) {
                 echo json_encode(['success' => true]);
             } else {

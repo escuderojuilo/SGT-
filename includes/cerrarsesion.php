@@ -16,8 +16,6 @@
     
     echo json_encode(['success' => true, 'message' => 'Sesión cerrada']);
 
-    
-    file_put_contents('php://stderr', "Cierre de sesión ejecutado\n", FILE_APPEND);
 
     header('Location: /SGT-Boostrap/index.php');
 

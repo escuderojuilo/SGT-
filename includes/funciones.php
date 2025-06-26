@@ -366,13 +366,14 @@ function reg(){
                 $resul = mysqli_query($db,$query);
                 $usuario = mysqli_fetch_assoc($resul);
 
-                $ss = $db->prepare("INSERT INTO personal_uc (ID_USR, N_CUENTA, ESTATUS) VALUES (?, ?, ?)");
+                $ss = $db->prepare("UPDATE usuario SET UC=1 WHERE ID_USR = ?");
 
-                $ss->bind_param('iss', $usuario['ID_USR'], $numero , $activ);
+                $ss->bind_param('i', $usuario['ID_USR']);
 
                 $ss->execute();
                 $ss->close();
              }
+
              mysqli_close($db);
     
         }else{
