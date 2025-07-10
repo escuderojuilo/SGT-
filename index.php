@@ -4,6 +4,20 @@
 require __DIR__ ."/includes/funciones.php";
 logusr();
 
+session_set_cookie_params(60 * 60 * 24 * 7); // Igual que en el resto de tu sistema
+session_start();
+
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    // Puedes redirigir según el rol si lo deseas
+    if (isset($_SESSION['ID_ROL']) && $_SESSION['ID_ROL'] == 1) {
+        header('Location: Ticket.php'); // Menú de administrador
+        exit;
+    } else {
+        header('Location: SoporteUsuario.php'); // Menú de usuario normal
+        exit;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

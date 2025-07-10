@@ -1,18 +1,11 @@
 <?php
     require __DIR__ ."/includes/funciones.php";
 
-
-    if(!isset($_SESSION)){
-        session_start();
-    }
-
-    $auth = $_SESSION['login'] ?? false;
-
-    equipo();
+    session_start();
 
     var_dump($_SESSION);
 
-    //hola prueba de commit
+    equipo();
 
 ?>
 

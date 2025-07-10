@@ -17,10 +17,12 @@ require "includes/database.php";
         $nuevoRol = $input['nuevoRol'];
 
         // Obtener el ID_ROL correspondiente al nombre del rol
+        
         $stmt = $db->prepare("SELECT ID_ROL FROM rol WHERE NOM_ROL = ?");
         $stmt->bind_param('s', $nuevoRol);
         $stmt->execute();
         $stmt->bind_result($idRol);
+
         if ($stmt->fetch()) {
             $stmt->close();
             // Actualizar el usuario con el nuevo rol
@@ -36,6 +38,8 @@ require "includes/database.php";
         } else {
             echo json_encode(['success' => false, 'message' => 'Rol no encontrado']);
         }
+
+
         $db->close();
         exit;
     } else {

@@ -207,13 +207,17 @@ function logusr(){
                         //Insertar un token de sesión para el usuario para asegurar que solo este su sesion activa
                         $stmt = $db->prepare("UPDATE usuario SET TOKEN = ? WHERE ID_USR = ?");
                         $stmt->bind_param("si", $_SESSION['TOKEN'], $usuario['ID_USR']);
-                        $stmt->execute();                       
+                        $stmt->execute();
+                        
+                        echo json_encode([
+                        "token" => $_SESSION['TOKEN']
+                         ]);
                         
                         //LLenar el arreglo de la sesión
                         $_SESSION['EMAIL'] = $usuario['EMAIL'];
                         $_SESSION['login'] = true;
                         $_SESSION['ID_ROL'] = $usuario['ID_ROL'];
-
+                        $_SESSION['NOMBRE'] = $usuario['NOMBRE'];
                         
                         usr_acc();
                         //header('Location: /ticket.php');
@@ -258,6 +262,8 @@ function equipo() {
         $host = mysqli_real_escape_string($db, $_POST['host']);
         $tipoimp = mysqli_real_escape_string( $db, $_POST['tipo-impresora']);
         $desc = mysqli_real_escape_string($db, $_POST['descripcion-otro']);
+        $labo = mysqli_real_escape_string($db, $_POST['laboratorio']);
+        $nomlab= mysqli_real_escape_string($db, $_POST['sallab']);
         
         $con = $db -> prepare('SELECT COUNT(*) FROM dispositivo WHERE N_INVENTARIO = ?');
 
@@ -288,14 +294,26 @@ function equipo() {
                     $disp = $db->prepare("INSERT INTO  computo(ID_DISPO, TIPO, PROCESADOR, RAM, ALMACENAMIENTO, NOM_HOST, SO) VALUES (?, ?, ?, ?, ?, ?, ?)");
                     $disp->bind_param('issssss',$usuario['ID_DISPO'], $tipocom, $procesador, $ram, $alma, $host, $so);
                     $disp->execute();
+                    $disp->close();
+
+                    if($lab === 'Si'){
+
+                        $query = "SELECT ID_LAB FROM laboratorio WHERE NOM_LAB = '$nomlab' ";
+                        $resul = mysqli_query($db,$query);
+                        $lab = mysqli_fetch_assoc($resul);
+
+
+                        $disp = $db->prepare("INSERT INTO disp_lab(ID_DISPO, ID_LAB) VALUES (?, ?)");
+                        $disp->bind_param('ii', $USUARIO['ID_DISPO'], $lab['ID_LAB']);
+                        $disp->execute();
+                        $disp->close();
+                    }
                     
                 case 'impresora':
-
                 case 'otro':
                 
                     $disp->close();
                     mysqli_close($db);
-
             }
 
         } else {

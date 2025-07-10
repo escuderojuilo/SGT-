@@ -2,8 +2,8 @@
 
 require "includes/database.php";
 
-$con ='SELECT usuario.NOMBRE, asignacion.ID_UC, COUNT(*) as veces FROM asignacion inner join personal_uc on asignacion.ID_UC = personal_uc.ID_UC
- inner join usuario on personal_uc.ID_USR = usuario.ID_USR group by ID_UC';
+$con ='SELECT usuario.NOMBRE, asignacion.ID_USR, COUNT(*) as veces FROM asignacion
+inner join usuario on asignacion.ID_USR = usuario.ID_USR group by ID_USR';
 
 // Obtener los resultados
 $resul = mysqli_query($db, $con);

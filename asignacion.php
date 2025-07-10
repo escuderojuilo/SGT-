@@ -22,13 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        $query = "SELECT ID_UC FROM personal_uc WHERE ID_USR = '$servicioid' ";
-        $result = mysqli_query($db, $query);
-        $cambio = mysqli_fetch_assoc($result);
-
         // Actualizar el estado del ticket
-        $stmt = $db->prepare("INSERT INTO asignacion (ID_TKT, ID_UC, FECHA_ASIG) VALUES (?, ?, ?)");
-        $stmt->bind_param('iis', $ticketId, $cambio['ID_UC'] , $fechasig);
+        $stmt = $db->prepare("INSERT INTO asignacion (ID_TKT, ID_USR, FECHA_ASIG) VALUES (?, ?, ?)");
+        $stmt->bind_param('iis', $ticketId, $servicioid , $fechasig);
 
 
         if ($stmt->execute()) {
