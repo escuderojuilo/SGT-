@@ -17,7 +17,6 @@ require "includes/database.php";
         $nuevoRol = $input['nuevoRol'];
 
         // Obtener el ID_ROL correspondiente al nombre del rol
-        
         $stmt = $db->prepare("SELECT ID_ROL FROM rol WHERE NOM_ROL = ?");
         $stmt->bind_param('s', $nuevoRol);
         $stmt->execute();
@@ -43,14 +42,16 @@ require "includes/database.php";
         $db->close();
         exit;
     } else {
-        echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
-        $db->close();
-        exit;
+            echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
+            $db->close();
+            exit;
     }
-}
 
+}
+    
+    
     $auth = $_SESSION['login'] ?? false;
-    $query = "SELECT usuario.ID_USR, usuario.NOMBRE, usuario.AP_PAT, rol.NOM_ROL FROM usuario 
+    $query = "SELECT usuario.ID_USR, usuario.NOMBRE, usuario.AP_PAT, usuario.STATUS_USR, rol.NOM_ROL FROM usuario 
     INNER JOIN rol on usuario.ID_ROL = rol.ID_ROL";
     $resul = mysqli_query($db,$query);
 

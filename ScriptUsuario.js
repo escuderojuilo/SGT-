@@ -5,20 +5,19 @@ let usuarioActual = null;
 // Datos de laboratorios (ya definidos en el PHP)
 let laboratorios = window.laboratorios || [];
 
-
 document.addEventListener('DOMContentLoaded', function() {
     fetch('datosusuario.php')
     .then(response => response.json())
     .then(datos => {
         console.log(datos);
         console.log("Contenido de data:", datos); // Verificar los datos en la consola
-
         //guardar datos en una variable
         usuarios = datos.map(user  => ({
             id: user.ID_USR, 
             nombre: user.NOMBRE, 
             apellido: user.AP_PAT, 
-            rol: user.NOM_ROL})); // Inicializar la variable tickets como un arreglo
+            rol: user.NOM_ROL,
+            activo: user.STATUS_USR})); // Inicializar la variable tickets como un arreglo
 
         console.log("Usuarios:", usuarios);
         // Suponiendo que tienes una función para llenar los datos
@@ -54,9 +53,10 @@ function camrol(usuarioId, nuevoRol) {
     });
 }
 
+
+
+
 //Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
-
-
 //function cargarUsuarios() {
 //        fetch('getUsuarios.php')
 //        .then(response => {
@@ -123,18 +123,23 @@ function filtrarUsuarios(filtro) {
         let estadoCheck = '';
 
         if (isAdmin) {
-            estadoCheck = `
-                <input type="checkbox"
-                    ${usuario.activo ? 'checked' : ''}
-                    onchange="cambiarEstadoUsuario(${usuario.id}, this.checked)">
-            `;
+           estadoCheck = `
+    <div class="form-check form-switch d-flex justify-content-center">
+        <input class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="switch-${usuario.id}"
+            ${usuario.activo ? 'checked' : ''}
+            onchange="console.log('Switch usuario ${usuario.id}:', this.checked); cambiarEstadoUsuario(${usuario.id}, this.checked)">
+    </div>
+`;
             acciones = `
                 <button class="btn btn-primary btn-sm" onclick="mostrarModalCambioRol(${usuario.id}, '${usuario.nombre}')">
                     <i class="material-icons">edit</i> Cambiar Rol
                 </button>
             `;
         } else {
-            estadoCheck = `<span class="badge ${usuario.activo ? 'bg-success' : 'bg-secondary'}">${usuario.activo ? 'Activo' : 'Inactivo'}</span>`;
+            estadoCheck = `<span class="badge ${usuario.activo ? 'bg-success' : 'bg-secondary'}">${usuario.activo ? '1' : '0'}</span>`;
             acciones = `<small>No disponible</small>`;
         }
 
@@ -156,6 +161,7 @@ function filtrarUsuarios(filtro) {
 
 function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
     const usuario = usuarios.find(u => u.id === usuarioId);
+   
     if (!usuario) return;
 
     // Si es admin y se intenta desactivar, verifica si es el único admin activo
@@ -169,8 +175,37 @@ function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
         }
     }
 
-    usuario.activo = nuevoEstado;
+    
     filtrarUsuarios(getFiltroActual());
+
+    // Envía el cambio al backend
+    fetch('usuariostat.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            accion: 'cambiar_estado',
+            id: usuarioId,
+            nuevoEstadoo: nuevoEstado
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.success) {
+            alert('Error al actualizar el estado en la base de datos: ' + data.message);
+            // Opcional: revertir el cambio en el frontend si falla
+            usuario.activo = nuevoEstado;
+            filtrarUsuarios(getFiltroActual());
+            location.reload();
+            console.log('Error al actualizar el estado:', data.error);
+        }
+    })
+    .catch(error => {
+        alert('Error de red al actualizar el estado.');
+        usuario.activo = !nuevoEstado;
+        filtrarUsuarios(getFiltroActual());
+    });
+
 }
 
 
@@ -256,11 +291,9 @@ function mostrarModalCambioRol(id, nombre) {
 
 function cambiarRol() {
     if (!isAdmin) return;
-
     const nuevoRol = document.getElementById('rol-select').value;
     const usuarioId = parseInt(document.getElementById('usuario-id').value);
     let laboratorioId = null;
-
     if (nuevoRol === 'lab_encargado') {
         laboratorioId = parseInt(document.getElementById('laboratorio-select').value);
         if (!laboratorioId) {
@@ -268,19 +301,15 @@ function cambiarRol() {
             return;
         }
     }
-
     // Actualizar el usuario en los datos de prueba
     const usuarioIndex = usuarios.findIndex(u => u.id === usuarioId);
     if (usuarioIndex !== -1) {
         usuarios[usuarioIndex].rol = nuevoRol;
         usuarios[usuarioIndex].laboratorio_id = nuevoRol === 'lab_encargado' ? laboratorioId : null;
     }
-
     // Cerrar el modal
     bootstrap.Modal.getInstance(document.getElementById('cambiarRolModal')).hide();
-
     camrol(usuarioId, nuevoRol);
-    
     // Recargar la vista actual
     const activeButton = document.querySelector('.btn-group button.active');
     if (activeButton) {
