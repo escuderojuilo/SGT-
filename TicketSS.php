@@ -32,33 +32,11 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Alta
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="AltaInventario.php">Alta Inventario</a></li>
-                                <li><a class="dropdown-item" href="AltaUsuario.php">Alta Usuario</a></li>
-                                <li><a class="dropdown-item" href="SoportesAntiguos.php">Alta Soportes</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="consultas.php">Consultas</a>
-                        </li>
+                            <a class="nav-link" href="EstadisticasVistaSS.php">Estadisticas</a>
+                        </li>    
                         <li class="nav-item">
-                            <a class="nav-link" href="Historial.php">Historial</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Estadísticas
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="EstadisticasSS.php">Estadísticas Servicio</a></li>
-                                <li><a class="dropdown-item" href="EstadisticasUsuario.php">Estadísticas Usuario</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="Ticket.php">Tickets</a>
+                            <a class="nav-link" href="TicketSS.php">Tickets</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="InicioSesion.php">Cerrar Sesión</a>
@@ -66,6 +44,7 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
                     </ul>
                 </div>
             </div>
+        </nav>
         </nav>
     </div>
 
@@ -117,7 +96,5 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
         const idServicioSocial = <?php echo $idServicioSocial; ?>;
     </script>
     <script src="ScriptSS.js"></script>
-    <script src="/SGT-Boostrap/js/global.js"></script>
-
 </body>
 </html>
