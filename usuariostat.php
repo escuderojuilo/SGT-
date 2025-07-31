@@ -12,15 +12,17 @@ require "includes/database.php";
 
         $input = json_decode(file_get_contents('php://input'), true);
 
-        if (isset($input['id']) && isset($input['nuevoEstadoo'])) {
+        if (isset($input['id']) && isset($input['nuevoEstado'])) {
                 $usuarioId = $input['id'];
-                $nuevoEstado = $input['nuevoEstadoo'] ;
+                $nuevoEstado = $input['nuevoEstado'] ;
 
-                if( $nuevoEstado === false) {
-                    $nuevoEstado2 = 0; // Activo
-                } else {
-                    $nuevoEstado2 = 1; // Inactivo
-                }
+                //if( $nuevoEstado === false) {
+                   // $nuevoEstado2 = 0; // Activo
+               // } else {
+                //    $nuevoEstado2 = 1; // Inactivo
+               // }
+                $nuevoEstado2 = ($nuevoEstado === true || $nuevoEstado === 'true' || $nuevoEstado == 1) ? 1 : 0;
+
 
                 $stmt3 = $db->prepare("UPDATE usuario SET STATUS_USR = ? WHERE ID_USR = ?");
                 $stmt3->bind_param('ii', $nuevoEstado2, $usuarioId);

@@ -68,7 +68,10 @@ function usr_acc(): void{
     session_start();
     if($_SESSION['ID_ROL'] === "1"){
         header("Location: Ticket.php");
-    }else {
+    }elseif ($_SESSION['ID_ROL'] === "2") {
+        header("Location: TicketSS.php");
+        echo"no se que pasa xd";
+    } else {
         header("Location: SoporteUsuario.php");
         echo"no se que pasa xd";
     }

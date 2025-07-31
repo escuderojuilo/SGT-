@@ -124,7 +124,7 @@ function filtrarUsuarios(filtro) {
 
         if (isAdmin) {
            estadoCheck = `
-    <div class="form-check form-switch d-flex justify-content-center">
+    <div class="form-check form-switch d-flex justify-content-center" >
         <input class="form-check-input"
             type="checkbox"
             role="switch"
@@ -185,25 +185,24 @@ function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
         body: JSON.stringify({
             accion: 'cambiar_estado',
             id: usuarioId,
-            nuevoEstadoo: nuevoEstado
+            nuevoEstado: nuevoEstado
         })
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if (data.success) {
-            alert('Error al actualizar el estado en la base de datos: ' + data.message);
-            // Opcional: revertir el cambio en el frontend si falla
-            usuario.activo = nuevoEstado;
+            console.log(data);
             filtrarUsuarios(getFiltroActual());
-            location.reload();
-            console.log('Error al actualizar el estado:', data.error);
-        }
+        } else {
+        alert('Error al actualizar el estado: ' + (data.message || 'Error desconocido'));
+        usuario.activo = !nuevoEstado; // Revertir el cambio en el frontend
+        filtrarUsuarios(getFiltroActual());
+    }
     })
     .catch(error => {
-        alert('Error de red al actualizar el estado.');
-        usuario.activo = !nuevoEstado;
-        filtrarUsuarios(getFiltroActual());
+        alert('Error de red al actualizar el estado: ' + error.message);
+    usuario.activo = !nuevoEstado; // Revertir el cambio en el frontend
+    filtrarUsuarios(getFiltroActual());
     });
 
 }
