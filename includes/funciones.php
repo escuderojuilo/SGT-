@@ -63,19 +63,24 @@ function servicio(){
 }
 
 // Función para identificar que nivel de privilegio tiene el usuario 
-function usr_acc(): void{
+/*function usr_acc(): void{
 
     session_start();
-    if($_SESSION['ID_ROL'] === "1"){
-        header("Location: Ticket.php");
-    }elseif ($_SESSION['ID_ROL'] === "2") {
-        header("Location: TicketSS.php");
-        echo"no se que pasa xd";
-    } else {
-        header("Location: SoporteUsuario.php");
-        echo"no se que pasa xd";
+
+    switch ($_SESSION['ID_ROL']) {
+        case "1":
+            header("Location: Ticket.php");
+            break;
+    case "2":
+            header("Location: TicketSS.php");
+            echo "no se que pasa xd";
+           break;
+    default:
+            header("Location: SoporteUsuario.php");
+            echo "no se que pasa xd";
+            break;
     }
-}
+}*/
 
 
 // Función para levantar un ticket 
@@ -222,7 +227,7 @@ function logusr(){
                         $_SESSION['ID_ROL'] = $usuario['ID_ROL'];
                         $_SESSION['NOMBRE'] = $usuario['NOMBRE'];
                         
-                        usr_acc();
+                      // usr_acc();
                         //header('Location: /ticket.php');
 
                         echo "<pre>";

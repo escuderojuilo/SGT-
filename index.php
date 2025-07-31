@@ -9,14 +9,21 @@ session_start();
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     // Puedes redirigir según el rol si lo deseas
-    if (isset($_SESSION['ID_ROL']) && $_SESSION['ID_ROL'] == 1) {
-        header('Location: Ticket.php'); // Menú de administrador
-        exit;
-    } else {
-        header('Location: SoporteUsuario.php'); // Menú de usuario normal
-        exit;
+   switch ($_SESSION['ID_ROL']) {
+        case "1":
+            header("Location: Ticket.php");
+            break;
+        case "2":
+            header("Location: TicketSS.php");
+            echo "no se que pasa xd";
+            break;
+        default:
+            header("Location: SoporteUsuario.php");
+            echo "no se que pasa xd";
+            break;
     }
 }
+
 
 ?>
 
