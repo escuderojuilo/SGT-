@@ -1,28 +1,33 @@
 // ScriptSS.js - Lógica principal del sistema de tickets
 let tickets = [];
+const servicio = idServicioSocial; 
 
 document.addEventListener('DOMContentLoaded', function() {
     // Hacemos la petición incluyendo el idServicioSocial
-    fetch(`datostkt.php?id_servicio_social=${idServicioSocial}`)
+    fetch('datostktSS.php')
         .then(response => response.json())
         .then(data => {
+            console.log(data);
+            console.log(servicio);
             tickets = data.map(ticket => ({
-                id: ticket.ID,
+                id: ticket.ID_TKT,
                 solicitante: ticket.NOMBRE,
                 cubiculo: ticket.CUBICULO,
                 horario: ticket.FECHA_INI,
+                idestado: ticket.ID_STATUS_TKT,
                 problema: ticket.MOTIVO,
-                estado: ticket.DESC_STATUS_TKT,
-                servicioSocial: ticket.ASIGNADO_A || '',
-                servicioSocialId: ticket.ID_ASIGNADO, // ID del usuario asignado
-                fechaFinalizacion: ticket.FECHA_FIN || ''
+                fechaFinalizacion: ticket.FECHA_FIN,
+                servicioo: ticket.NOMBRE_ASIGNADO
             }));
-            filtrarTickets('Iniciado');
+            filtrarTickets('2');
         })
         .catch(error => console.error("Error al obtener tickets:", error));
 });
 
 function filtrarTickets(estado) {
+
+     console.log("Estado recibido:", estado);
+    console.log("Tickets:", tickets);
     const buttons = document.querySelectorAll('.btn-group button');
     buttons.forEach(button => {
         button.classList.remove('active');
@@ -33,10 +38,12 @@ function filtrarTickets(estado) {
     
     // Filtramos por estado y por el ID del servicio social logueado
     const ticketsFiltrados = tickets.filter(ticket => 
-        ticket.estado === estado && 
-        ticket.servicioSocialId == idServicioSocial
+        ticket.idestado == estado 
     );
     
+    console.log("Tickets filtrados:", ticketsFiltrados);
+
+
     const tbody = document.getElementById('tickets-body');
     tbody.innerHTML = '';
 
@@ -44,16 +51,16 @@ function filtrarTickets(estado) {
         const tr = document.createElement('tr');
 
         let acciones = '';
-        if (estado === 'Iniciado') {
+        if (estado === '2') {
             acciones = `
                 <div>
-                    <small class="d-block">Asignado a: ${ticket.servicioSocial}</small>
+                    <small class="d-block">Asignado a: ${ticket.servicioo}</small>
                 </div>
             `;
-        } else if (estado === 'Finalizado') {
+        } else if (estado === '3') {
             acciones = `
                 <div class="text-center">
-                    <small class="d-block">Completado por: ${ticket.servicioSocial}</small>
+                    <small class="d-block">Completado por: ${ticket.servicioo}</small>
                     <small>Finalizado: ${ticket.fechaFinalizacion || 'No especificado'}</small>
                 </div>
             `;
@@ -64,6 +71,7 @@ function filtrarTickets(estado) {
             <td>${ticket.cubiculo}</td>
             <td>${ticket.horario}</td>
             <td>${ticket.problema}</td>
+            <td>${ticket.servicioo || ''}</td>
             <td class="acciones">${acciones}</td>
         `;
         tbody.appendChild(tr);

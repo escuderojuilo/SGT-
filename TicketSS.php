@@ -1,8 +1,11 @@
 <?php
 require __DIR__ . '/includes/funciones.php';
 session_start();
-$idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
+$idServicioSocial = $_SESSION['ID_USR'];
+
+var_dump($_SESSION);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -59,10 +62,10 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
                     <div class="card-body">
                         <div class="d-flex justify-content-center mb-4">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-warning" onclick="filtrarTickets('Iniciado')">
+                                <button type="button" class="btn btn-warning" onclick="filtrarTickets('2')">
                                     <i class="material-icons">play_arrow</i> Iniciados
                                 </button>
-                                <button type="button" class="btn btn-success" onclick="filtrarTickets('Finalizado')">
+                                <button type="button" class="btn btn-success" onclick="filtrarTickets('3')">
                                     <i class="material-icons">check_circle</i> Finalizados
                                 </button>
                             </div>
@@ -96,8 +99,7 @@ $idServicioSocial = $_SESSION['id_servicio_social'] ?? 0;
         // Pasamos el ID del servicio social desde PHP a JavaScript
         const idServicioSocial = <?php echo $idServicioSocial; ?>;
     </script>
-    <script src="ScriptSS.js"></script>
-    <script src="/SGT-Boostrap/js/global.js"></script>
+    <script src="scriptSS.js"></script>
 
 </body>
 </html>
