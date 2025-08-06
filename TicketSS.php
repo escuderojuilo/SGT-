@@ -79,7 +79,8 @@ var_dump($_SESSION);
                                         <th width="15%">Cubículo</th>
                                         <th width="15%">Horario de atención</th>
                                         <th width="30%">Problema</th>
-                                        <th width="20%">Atendió</th>
+                                        <th width="10%">Atendió</th>
+                                        <th width="10%">Finalización</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tickets-body">

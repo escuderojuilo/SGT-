@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         solucion: ticket.SOLUCION,
         servicio: ticket.NOMBRE_ASIGNADO })); // Inicializar la variable tickets como un arreglo
 
-        //console.log("Tickets:", tickets)
+        console.log("Tickets:", tickets)
     
         filtrarTickets('1');
     })

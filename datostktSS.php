@@ -10,8 +10,6 @@ require "includes/database.php";
 
     $auth = $_SESSION['login'] ?? false;
 
-    
-
     $query = "SELECT ticket.ID_TKT, ticket.ID_STATUS_TKT, ticket.ID_USR, status_tkt.DESC_STATUS_TKT,
     ticket.ID_DISPO, ticket.FECHA_INI, ticket.MOTIVO, ticket.CUBICULO, ticket.FECHA_FIN, ticket.SOLUCION, dispositivo.N_INVENTARIO, 
     dispositivo.MARCA, dispositivo.MODELO, usuario.NOMBRE, usuario.AP_PAT, usuario_asignado.nombre AS NOMBRE_ASIGNADO
@@ -38,15 +36,13 @@ require "includes/database.php";
     
 
     while ($row = $resul->fetch_assoc()) {
-        if($row ["ID_STATUS_TKT"] === "1"){
-            $datos[] = $row;
-    }elseif($row ["ID_STATUS_TKT"] === "2"){
+    if($row ["ID_STATUS_TKT"] === "2"){
         $datos[] = $row;
     }elseif($row ["ID_STATUS_TKT"] === "3"){
-        $datos[] = $row;    
+        $datos[] = $row;
     }}
 
-echo json_encode($datos);
+    echo json_encode($datos);
 
     mysqli_close($db);
     exit;

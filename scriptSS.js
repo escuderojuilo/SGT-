@@ -5,40 +5,45 @@ const servicio = idServicioSocial;
 document.addEventListener('DOMContentLoaded', function() {
     // Hacemos la petición incluyendo el idServicioSocial
     fetch('datostktSS.php')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            console.log(servicio);
-            tickets = data.map(ticket => ({
-                id: ticket.ID_TKT,
-                solicitante: ticket.NOMBRE,
-                cubiculo: ticket.CUBICULO,
-                horario: ticket.FECHA_INI,
-                idestado: ticket.ID_STATUS_TKT,
-                problema: ticket.MOTIVO,
-                fechaFinalizacion: ticket.FECHA_FIN,
-                servicioo: ticket.NOMBRE_ASIGNADO
+    .then(response => response.json())
+    .then(data => {
+        //console.log("info de la base de datos", data);
+        //console.log("Servicio relacinado",servicio);
+        tickets = data.map(ticket => ({
+            id: ticket.ID_TKT,
+            solicitante: ticket.NOMBRE,
+            cubiculo: ticket.CUBICULO,
+            horario: ticket.FECHA_INI,
+            idestado: ticket.ID_STATUS_TKT,
+            problema: ticket.MOTIVO,
+            fechaFinalizacion: ticket.FECHA_FIN,
+            servicioo: ticket.NOMBRE_ASIGNADO
             }));
+
+            console.log("Tickets:", tickets)
+
             filtrarTickets('2');
         })
         .catch(error => console.error("Error al obtener tickets:", error));
 });
 
+
 function filtrarTickets(estado) {
 
-     console.log("Estado recibido:", estado);
+    console.log("Estado recibido:", estado);
     console.log("Tickets:", tickets);
     const buttons = document.querySelectorAll('.btn-group button');
     buttons.forEach(button => {
-        button.classList.remove('active');
-        if (button.textContent.includes(estado)) {
+        if (button.id === estado) {
             button.classList.add('active');
+        } else {
+            button.classList.remove('active');
         }
     });
     
     // Filtramos por estado y por el ID del servicio social logueado
     const ticketsFiltrados = tickets.filter(ticket => 
-        ticket.idestado == estado 
+        String(ticket.idestado) === String(estado) 
     );
     
     console.log("Tickets filtrados:", ticketsFiltrados);

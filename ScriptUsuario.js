@@ -54,8 +54,6 @@ function camrol(usuarioId, nuevoRol) {
 }
 
 
-
-
 //Datos de prueba, eliminar esta parte después y usar la funcion comentada de abajo
 //function cargarUsuarios() {
 //        fetch('getUsuarios.php')
@@ -175,33 +173,25 @@ function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
         }
     }
 
-    
     filtrarUsuarios(getFiltroActual());
-
     // Envía el cambio al backend
     fetch('usuariostat.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            accion: 'cambiar_estado',
             id: usuarioId,
             nuevoEstado: nuevoEstado
         })
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            console.log(data);
-            filtrarUsuarios(getFiltroActual());
-        } else {
-        alert('Error al actualizar el estado: ' + (data.message || 'Error desconocido'));
-        usuario.activo = !nuevoEstado; // Revertir el cambio en el frontend
+        console.log("Respuesta del servidor:", data);
         filtrarUsuarios(getFiltroActual());
-    }
+    
     })
     .catch(error => {
         alert('Error de red al actualizar el estado: ' + error.message);
-    usuario.activo = !nuevoEstado; // Revertir el cambio en el frontend
+ // Revertir el cambio en el frontend
     filtrarUsuarios(getFiltroActual());
     });
 

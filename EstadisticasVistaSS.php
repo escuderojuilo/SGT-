@@ -1,3 +1,18 @@
+<?php
+
+require "includes/database.php";
+
+$con ='SELECT usuario.NOMBRE, asignacion.ID_USR, COUNT(*) as veces FROM asignacion
+inner join usuario on asignacion.ID_USR = usuario.ID_USR group by ID_USR';
+
+// Obtener los resultados
+$resul = mysqli_query($db, $con);
+
+foreach ($resul as $row) {
+    $resultados[] = $row;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +22,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Charts -->
-    <link rel="stylesheet" href="EstadisticaSS.css">
+    <link rel="stylesheet" href="css/EstadisticaSS.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body class="bg-secondary">
@@ -15,7 +30,7 @@
     <div class="container-fluid g-0 mb-3">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="IMG/encabezado.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
+                <img src="imagenes/encabezadoHD.jpg" alt="SOPORTEC - Sistema de Soporte Técnico" class="w-100">
             </div>
         </div>
 
@@ -85,32 +100,37 @@
     
     <script type="text/javascript">
     // Datos iniciales del gráfico
-    var chartData = [
-        ['Nombre', 'Soportes atendidos'],
-        ['Alonso', 11],
-        ['Brenda', 2],
-        ['Carla', 2],
-        ['Diego', 2],
-        ['Emilia', 7]
-    ];
-    
-    // Cargar Google Charts
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     
     // Variable para almacenar la instancia del gráfico
-    var chart;
     
+    var resultados = <?php echo json_encode($resultados); ?>;
+
+        var dataArray = [['Actividad', 'Veces']];
+        resultados.forEach(function(fila) {
+        dataArray.push([fila.NOMBRE, parseInt(fila.veces)]);
+        });
+
     function drawChart() {
-        var data = google.visualization.arrayToDataTable(chartData);
-        
+
+       // var resultados = <?php echo json_encode($resultados); ?>;
+
+        //var dataArray = [['Actividad', 'Veces']];
+       // resultados.forEach(function(fila) {
+        //dataArray.push([fila.NOMBRE, parseInt(fila.veces)]);
+        //});
+
+        var data = google.visualization.arrayToDataTable(dataArray);
+        // var data = google.visualization.arrayToDataTable([
+
         var options = {
             title: 'Actividades realizadas',
             is3D: true,
             pieSliceText: 'value'
         };
-        
-        chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
         
         // Actualizar los checkboxes del modal
@@ -123,14 +143,14 @@
         container.innerHTML = '';
         
         // Solo agregar checkboxes para los datos actuales (omitir encabezado)
-        for (let i = 1; i < chartData.length; i++) {
-            const nombre = chartData[i][0];
+        for (let i = 1; i < dataArray.length; i++) {
+            const nombre = dataArray[i][0];
             const div = document.createElement('div');
             div.className = 'form-check modal-checkbox-item';
             div.innerHTML = `
                 <input class="form-check-input" type="checkbox" value="${nombre}" id="modal-check-${nombre}">
                 <label class="form-check-label" for="modal-check-${nombre}">
-                    ${nombre} (${chartData[i][1]} soportes)
+                    ${nombre} (${dataArray[i][1]} soportes)
                 </label>
             `;
             container.appendChild(div);
@@ -149,15 +169,15 @@
         }
         
         // Filtrar los datos eliminando los seleccionados
-        const nuevosDatos = [chartData[0]]; // Mantener los encabezados
-        for (let i = 1; i < chartData.length; i++) {
-            if (!nombresAEliminar.includes(chartData[i][0])) {
-                nuevosDatos.push(chartData[i]);
+        const nuevosDatos = [dataArray[0]]; // Mantener los encabezados
+        for (let i = 1; i < dataArray.length; i++) {
+            if (!nombresAEliminar.includes(dataArray[i][0])) {
+                nuevosDatos.push(dataArray[i]);
             }
         }
         
         // Actualizar los datos y redibujar el gráfico
-        chartData = nuevosDatos;
+        dataArray = nuevosDatos;
         drawChart();
         
         // Cerrar el modal
