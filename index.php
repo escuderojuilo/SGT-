@@ -1,4 +1,3 @@
-
 <?php
 
 require __DIR__ ."/includes/funciones.php";
@@ -7,23 +6,27 @@ logusr();
 session_set_cookie_params(60 * 60 * 24 * 7); // Igual que en el resto de tu sistema
 session_start();
 
+// Verificar si el usuario está logueado
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
-    // Puedes redirigir según el rol si lo deseas
-   switch ($_SESSION['ID_ROL']) {
-        case "1":
-            header("Location: Ticket.php");
-            break;
-        case "2":
-            header("Location: TicketSS.php");
-            echo "no se que pasa xd";
-            break;
-        default:
-            header("Location: SoporteUsuario.php");
-            echo "no se que pasa xd";
-            break;
+    // Verificar si el usuario está activo
+    if (isset($_SESSION['activo']) && $_SESSION['activo'] === false) {
+        // Mostrar modal de usuario inactivo
+        $_SESSION['inactivo'] = true;
+    } else {
+        // Redirigir según el rol si está activo
+        switch ($_SESSION['ID_ROL']) {
+            case "1":
+                header("Location: Ticket.php");
+                exit();
+            case "2":
+                header("Location: TicketSS.php");
+                exit();
+            default:
+                header("Location: SoporteUsuario.php");
+                exit();
+        }
     }
 }
-
 
 ?>
 
@@ -120,6 +123,29 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 </style>
 
 <body>
+    <!-- Modal para usuario inactivo -->
+    <?php if (isset($_SESSION['inactivo']) && $_SESSION['inactivo'] === true): ?>
+    <div class="modal fade show" id="inactiveModal" tabindex="-1" aria-labelledby="inactiveModalLabel" aria-hidden="false" style="display: block; background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="inactiveModalLabel">Usuario Inactivo</h5>
+                    <button type="button" class="btn-close btn-close-white" onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Su cuenta se encuentra inactiva. Por favor, contacte al administrador del sistema para más información.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModalAndLogout()">Cerrar sesión</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='InfoContacto.php'">Contactar soporte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php 
+        unset($_SESSION['inactivo']); // Limpiar la bandera después de mostrar el modal
+    endif; ?>
+
     <!-- Encabezado que ocupa todo el ancho con Bootstrap -->
     <div class="container-fluid g-0 mb-3"> <!-- container-fluid sin gutters (g-0) -->
         <div class="row">
@@ -170,5 +196,27 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('inactiveModal').style.display = 'none';
+        }
+        
+        // Función para cerrar el modal y hacer logout
+        function closeModalAndLogout() {
+            closeModal();
+            // Redirigir a una página de logout que limpie la sesión
+            window.location.href = 'logout.php';
+        }
+        
+        // Mostrar el modal automáticamente si está presente
+        document.addEventListener('DOMContentLoaded', function() {
+            <?php if (isset($_SESSION['inactivo']) && $_SESSION['inactivo'] === true): ?>
+                var modal = new bootstrap.Modal(document.getElementById('inactiveModal'));
+                modal.show();
+            <?php endif; ?>
+        });
+    </script>
 </body>
 </html>
