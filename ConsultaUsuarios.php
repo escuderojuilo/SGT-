@@ -115,7 +115,7 @@
                                     <tr>
                                         <th width="25%">Nombre</th> 
                                         <th width="20%">Rol</th>
-                                        <th width="15%" class="text-center">Estado</th>
+                                        <th width="15%" >Estado</th>
                                         <th width="20%">Cambiar Rol</th>
                                     </tr>
                                 </thead>

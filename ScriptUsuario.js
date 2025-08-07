@@ -126,11 +126,10 @@ function filtrarUsuarios(filtro) {
         <input class="form-check-input"
             type="checkbox"
             role="switch"
-            id="switch-${usuario.id}"
-            ${usuario.activo ? 'checked' : ''}
-            onchange="console.log('Switch usuario ${usuario.id}:', this.checked); cambiarEstadoUsuario(${usuario.id}, this.checked)">
-    </div>
-`;
+            id="${usuario.id}"
+            ${usuario.activo == true ? 'checked' : ''}
+            onchange="cambiarEstadoUsuario(${usuario.id}, this.checked)">
+    </div>`;
             acciones = `
                 <button class="btn btn-primary btn-sm" onclick="mostrarModalCambioRol(${usuario.id}, '${usuario.nombre}')">
                     <i class="material-icons">edit</i> Cambiar Rol
@@ -158,9 +157,7 @@ function filtrarUsuarios(filtro) {
 }
 
 function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
-    const usuario = usuarios.find(u => u.id === usuarioId);
-   
-    if (!usuario) return;
+    /*const usuario = usuarios.find(u => u.id === usuarioId);
 
     // Si es admin y se intenta desactivar, verifica si es el único admin activo
     if (usuario.rol === 'Administrador' && usuario.activo && !nuevoEstado) {
@@ -171,31 +168,43 @@ function cambiarEstadoUsuario(usuarioId, nuevoEstado) {
             filtrarUsuarios(getFiltroActual());
             return;
         }
-    }
+    } */
 
-    filtrarUsuarios(getFiltroActual());
+    //filtrarUsuarios(getFiltroActual());
     // Envía el cambio al backend
+    let estadoSwitch = nuevoEstado;
+    
+    console.log("El estado del switch es:", estadoSwitch);
     fetch('usuariostat.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             id: usuarioId,
-            nuevoEstado: nuevoEstado
+            nuevoEstado: estadoSwitch 
         })
     })
     .then(response => response.json())
     .then(data => {
         console.log("Respuesta del servidor:", data);
-        filtrarUsuarios(getFiltroActual());
+        if (data.success) {
+            
+            const usuario = usuarios.find(u => u.id === usuarioId);
+            if (usuario) usuario.activo === estadoSwitch;
+
+           
+        } else {
+            alert("Error al actualizar en la base de datos");
+            document.getElementById(usuarioId).checked = !estadoSwitch;
+        }
     
     })
     .catch(error => {
         alert('Error de red al actualizar el estado: ' + error.message);
+        document.getElementById(usuarioId).checked = !estadoSwitch;
  // Revertir el cambio en el frontend
-    filtrarUsuarios(getFiltroActual());
     });
 
-}
+};
 
 
 function getNombreRol(rol) {
